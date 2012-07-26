@@ -42,7 +42,7 @@ augroup END
 nmap <silent> <leader>v :next $MYVIMRC<CR>
 
 " Special Chars
-nmap <silent> <leader>x :set list!<CR>
+nmap <silent> <leader># :set list!<CR>
 set listchars=tab:▸\·,eol:¬,trail:\·,extends:»,precedes:«
 highlight NonText ctermfg=DarkGrey
 highlight SpecialKey ctermbg=0 ctermfg=DarkRed " Demo: tab & trailing spaces should be red	text     
@@ -66,7 +66,7 @@ set softtabstop=2 " BS deletes 2 spaces
 set tabstop=8 " Make unwanted tabs easy to spot
 
 " Line width
-au FileType java setlocal textwidth=120 colorcolumn=+1
+au FileType java setlocal textwidth=100 colorcolumn=+1
 au FileType javascript setlocal textwidth=80 colorcolumn=+1
 
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
@@ -79,17 +79,17 @@ au CursorHold,BufWinEnter * checktime
 " Fix js syntax highlighting within html files (otherwise breaks after :e)
 au BufEnter *.html :syntax sync fromstart
 
-nnoremap <C-Left> :lprevious<CR>
-nnoremap <C-Right> :lnext<CR>
-nnoremap <C-j> :cnext<CR>
-nnoremap <C-k> :cprevious<CR>
-nnoremap <CR> mxi<CR><Esc>`x
-nnoremap <leader>c :execute "set colorcolumn=" . (&cc == "+1" ? "0" : "+1")<CR>
-nnoremap <leader>r :vertical resize 82<CR>
-nnoremap <leader>u :Bufdo checktime<CR>
-nnoremap <leader>p :set invpaste paste?<CR>
-nnoremap <C-w><C-^> :vsplit #<CR>
-nnoremap <Backspace> :nohlsearch<CR>
+nnoremap <silent> <C-Left> :lprevious<CR>
+nnoremap <silent> <C-Right> :lnext<CR>
+nnoremap <silent> <C-j> :cnext<CR>
+nnoremap <silent> <C-k> :cprevious<CR>
+nnoremap <silent> <CR> mxi<CR><Esc>`x
+nnoremap <silent> <leader>c :execute "set colorcolumn=" . (&cc == "+1" ? "0" : "+1")<CR>
+nnoremap <silent> <leader>r :vertical resize 82<CR>
+nnoremap <silent> <leader>u :Bufdo checktime<CR>
+nnoremap <silent> <leader>p :set invpaste paste?<CR>
+nnoremap <silent> <C-w><C-^> :vsplit #<CR>
+nnoremap <silent> <Backspace> :nohlsearch<CR>
 nnoremap <silent> <Leader>] :execute "silent! !ctags -R" <Bar> redraw!<CR>
 
 " Search/Replace
@@ -100,16 +100,17 @@ vmap s :s/
 vmap so !sort<CR>
 
 " Saving files
-nmap <leader>w :w<CR>
+nmap <silent> <leader>w :w<CR>
+nmap <silent> <leader>x :bd<CR>
 command! W w " Probbly not necessary once my fingers learn the mapping above
 
 " Alternate file
-nmap <leader>a <C-^>
-imap <C-^> <C-C>:e #<CR>
+nmap <silent> <leader>a <C-^>
+imap <silent> <C-^> <C-C>:e #<CR>
 
 " One-handed scrolling
-nmap <Space> <PageDown>
-nmap <M-Space> <PageUp>
+nmap <silent> <Space> <PageDown>
+nmap <silent> <M-Space> <PageUp>
 
 " Vimdiff
 " highlight DiffAdd cterm=bold ctermfg=green ctermbg=NONE guibg=NONE
@@ -181,8 +182,10 @@ let g:tagbar_autoclose=1
 " Toggle on/off
 nmap <silent> <expr> <leader>z FS_ToggleFoldAroundSearch({'context':1})
 " Show only JS function defs
-nmap <silent> <expr> <leader>js FS_FoldAroundTarget('\S\+\.prototype\.\w\+',{'context':1})
-nmap <silent> <expr> <leader>ja FS_FoldAroundTarget('\S\+\.prototype\.\w\+\\|\/\/.*',{'context':1})
+nmap <silent> <expr> <leader>jsp FS_FoldAroundTarget('\S\+\.prototype\.\w\+',{'context':0})
+nmap <silent> <expr> <leader>jsf FS_FoldAroundTarget('^\s\+function\s\+\w\+(',{'context':0})
+nmap <silent> <expr> <leader>jsc FS_FoldAroundTarget('\S\+\.prototype\.\w\+\\|\/\/.*',{'context':0})
+
 " Show only C #includes...
 "nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;',{'context':1})
 
