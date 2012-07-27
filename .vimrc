@@ -31,9 +31,6 @@ set wildmenu
 
 "=====[ Stuff ]===============================================================
 
-" Objective C
-"let g:filetype_m = "objc"
-
 " .vimrc
 augroup VimReload
   autocmd!
@@ -49,7 +46,7 @@ highlight SpecialKey ctermbg=0 ctermfg=DarkRed " Demo: tab & trailing spaces sho
 
 " Jump to most recent position in file
 autocmd BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
-                   \|     exe "normal! g`\""
+                   \|    exe "normal! g`\""
                    \|  endif
 
 " Persistent undo
@@ -64,6 +61,12 @@ set expandtab
 set shiftwidth=2 " Autoindent width
 set softtabstop=2 " BS deletes 2 spaces
 set tabstop=8 " Make unwanted tabs easy to spot
+
+" Persistent selection
+vmap <silent> > >gv
+vmap <silent> < <gv
+vmap <silent> u <ESC>ugv
+vmap <silent> <C-R> <ESC><C-R>gv
 
 " Line width
 au FileType java setlocal textwidth=100 colorcolumn=+1
