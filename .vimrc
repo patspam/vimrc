@@ -14,13 +14,15 @@ let mapleader = ";"
 "=====[ General Settings ]====================================================
 set autowrite " Automatically save before commands like :next and :make
 set background=dark
-set cursorline
+set colorcolumn=+1
 set hidden " Hide buffers when they are abandoned
 set hlsearch
 set ignorecase " Do case insensitive matching
 set incsearch " Incremental search
+set list " Special chars
 set modeline
 set mouse=a " Enable mouse usage (all modes)
+set nocursorline
 set showcmd " Show (partial) command in status line
 set showmatch " Show matching brackets
 set smartcase " Do smart case matching
@@ -37,17 +39,19 @@ augroup VimReload
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 nmap <silent> <leader>v :next $MYVIMRC<CR>
+au FileType vim setlocal textwidth=0
 
 " Special Chars
 nmap <silent> <leader># :set list!<CR>
 set listchars=tab:▸\·,eol:¬,trail:\·,extends:»,precedes:«
 highlight NonText ctermfg=DarkGrey
-highlight SpecialKey ctermbg=0 ctermfg=DarkRed " Demo: tab & trailing spaces should be red	text     
+highlight SpecialKey ctermbg=0 ctermfg=DarkRed
+" Demo: tab & trailing spaces should be red	text     
 
 " Jump to most recent position in file
-autocmd BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
-                   \|    exe "normal! g`\""
-                   \|  endif
+au BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
+              \|    exe "normal! g`\""
+              \|  endif
 
 " Persistent undo
 if has('persistent_undo')
@@ -82,10 +86,6 @@ au CursorHold,BufWinEnter * checktime
 " Fix js syntax highlighting within html files (otherwise breaks after :e)
 au BufEnter *.html :syntax sync fromstart
 
-nnoremap <silent> <C-Left> :lprevious<CR>
-nnoremap <silent> <C-Right> :lnext<CR>
-nnoremap <silent> <C-j> :cnext<CR>
-nnoremap <silent> <C-k> :cprevious<CR>
 nnoremap <silent> <CR> mxi<CR><Esc>`x
 nnoremap <silent> <leader>c :execute "set colorcolumn=" . (&cc == "+1" ? "0" : "+1")<CR>
 nnoremap <silent> <leader>r :vertical resize 82<CR>
@@ -129,6 +129,7 @@ augroup HelpInTabs
   function! HelpInNewTab ()
     if &buftype == 'help'
       execute "normal \<C-W>T"
+      set colorcolumn=
     endif
   endfunction
 augroup END
@@ -188,10 +189,17 @@ nmap <silent> <expr> <leader>z FS_ToggleFoldAroundSearch({'context':1})
 nmap <silent> <expr> <leader>jsp FS_FoldAroundTarget('\S\+\.prototype\.\w\+',{'context':0})
 nmap <silent> <expr> <leader>jsf FS_FoldAroundTarget('^\s\+function\s\+\w\+(',{'context':0})
 nmap <silent> <expr> <leader>jsc FS_FoldAroundTarget('\S\+\.prototype\.\w\+\\|\/\/.*',{'context':0})
+"nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;',{'context':1}) " Show only C #includes...
 
-" Show only C #includes...
-"nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;',{'context':1})
+" Commentary
+nmap <silent> <C-\> <Plug>CommentaryLine
 
+" Matchit (bundled with vim)
+:runtime macros/matchit.vim
+
+" a.vim
+nmap <silent> <leader>A :A<CR>
+let g:alternateExtensions_M = "h" " Objective-c
 
 "=====[ Functions ]===========================================================
 
