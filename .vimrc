@@ -22,7 +22,7 @@ set incsearch " Incremental search
 set list " Special chars
 set modeline
 set mouse=a " Enable mouse usage (all modes)
-set nocursorline
+set nocursorline " Causes a visible flicker, especially in visual mode
 set showcmd " Show (partial) command in status line
 set showmatch " Show matching brackets
 set smartcase " Do smart case matching
