@@ -86,14 +86,13 @@ au CursorHold,BufWinEnter * checktime
 " Fix js syntax highlighting within html files (otherwise breaks after :e)
 au BufEnter *.html :syntax sync fromstart
 
-nnoremap <silent> <CR> mxi<CR><Esc>`x
 nnoremap <silent> <leader>c :execute "set colorcolumn=" . (&cc == "+1" ? "0" : "+1")<CR>
-nnoremap <silent> <leader>r :vertical resize 82<CR>
 nnoremap <silent> <leader>u :Bufdo checktime<CR>
 nnoremap <silent> <leader>p :set invpaste paste?<CR>
 nnoremap <silent> <C-w><C-^> :vsplit #<CR>
 nnoremap <silent> <Backspace> :nohlsearch<CR>
 nnoremap <silent> <Leader>] :execute "silent! !ctags -R" <Bar> redraw!<CR>
+nnoremap <silent> <leader>q :cw<CR>
 
 " Search/Replace
 nmap <leader>s :%s/\<<C-r><C-w>\>/
@@ -114,6 +113,9 @@ imap <silent> <C-^> <C-C>:e #<CR>
 " One-handed scrolling
 nmap <silent> <Space> <PageDown>
 nmap <silent> <M-Space> <PageUp>
+
+" Make
+nnoremap <leader>m :silent make\|redraw!<CR>
 
 " Vimdiff
 " highlight DiffAdd cterm=bold ctermfg=green ctermbg=NONE guibg=NONE
@@ -157,7 +159,7 @@ let g:LustyJugglerDefaultMappings = 0
 nmap <silent> <leader>l :LustyJuggler<CR>
 
 " MRU
-nmap <silent> <leader>m :MRU<CR>
+nmap <silent> <leader>r :MRU<CR>
 
 " Ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -200,6 +202,24 @@ nmap <silent> <C-\> <Plug>CommentaryLine
 " a.vim
 nmap <silent> <leader>A :A<CR>
 let g:alternateExtensions_M = "h" " Objective-c
+let g:alternateDefaultMappings = 0
+
+" Objective C
+au FileType objc compiler clang
+
+" clang_complete
+" let g:clang_user_options = "-fobjc-arc\ -framework\ Foundation"
+"let g:clang_user_options='-fblocks -isysroot /Developer/Platforms/ iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk - D__IPHONE_OS_VERSION_MIN_REQUIRED=40300' 
+let g:clang_user_options = "-fblocks -fobjc-arc"
+let g:clang_complete_copen = 1
+let g:clang_snippets_engine = "snipmate"
+let g:clang_close_preview = 1
+"let g:clang_use_library = 1
+"let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
+
+
+" ToggleList
+nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
 
 "=====[ Functions ]===========================================================
 
@@ -211,6 +231,15 @@ function! BufDo(command)
   execute 'buffer ' . currBuff
 endfunction
 command! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
+
+nmap <silent> <CR> :call Enter()<CR>
+function! Enter()
+  if (&modifiable)
+    execute "normal! mxi\<CR>\<Esc>`x"
+  else
+    execute "normal! \<CR>"
+  endif
+endfunction
 
 " Post-config
 silent! source ~/.vimrc-post
