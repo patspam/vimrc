@@ -20,6 +20,7 @@ set hlsearch
 set ignorecase " Do case insensitive matching
 set incsearch " Incremental search
 set list " Special chars
+set matchtime=1 " Default 5 is too slow (in 10ms)
 set modeline
 set mouse=a " Enable mouse usage (all modes)
 set nocursorline " Causes a visible flicker, especially in visual mode
