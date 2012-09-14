@@ -7,7 +7,7 @@
 set nocompatible
 syntax on
 silent! source ~/.vimrc-pre
-call pathogen#infect() " Needs to happen before :filetype plugin indent on
+silent! source ~/.vimrc-vundle
 filetype plugin indent on
 let mapleader = ";"
 

@@ -1,0 +1,51 @@
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'Rip-Rip/clang_complete.git'
+Bundle 'jnwhiteh/vim-golang.git'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'majutsushi/tagbar.git'
+Bundle 'mileszs/ack.vim.git'
+Bundle 'milkypostman/vim-togglelist.git'
+Bundle 'msanders/snipmate.vim.git'
+Bundle 'nacitar/a.vim.git'
+Bundle 'scrooloose/nerdtree.git'
+Bundle 'tpope/vim-abolish.git'
+Bundle 'tpope/vim-commentary.git'
+Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-git.git'
+Bundle 'tpope/vim-repeat.git'
+Bundle 'tpope/vim-surround.git'
+Bundle 'tpope/vim-unimpaired.git'
+"Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+" vim-scripts repos
+Bundle 'LustyJuggler'
+Bundle 'a.vim.git'
+"Bundle 'clang.git'
+"Bundle 'mru.vim'
+"Bundle 'L9'
+"Bundle 'FuzzyFinder'
+
+" non github repos
+"Bundle 'git://git.wincent.com/command-t.git'
+" ...
+
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
