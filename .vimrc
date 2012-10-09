@@ -184,6 +184,7 @@ let g:tagbar_autoclose=1
 " let g:EclimJavaSearchSingleResult='edit'
 " au Filetype java nnoremap <silent> <Leader>g :JavaSearchContext<CR>
 " au Filetype java nnoremap <silent> <Leader>r :JavaSearch -x reference<CR>
+" nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
 
 " Foldsearch
 " Toggle on/off
