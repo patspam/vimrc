@@ -9,7 +9,6 @@ Bundle 'gmarik/vundle'
 "
 " original repos on github
 Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'Rip-Rip/clang_complete.git'
 Bundle 'jnwhiteh/vim-golang.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'majutsushi/tagbar.git'
@@ -27,12 +26,13 @@ Bundle 'tpope/vim-surround.git'
 Bundle 'tpope/vim-unimpaired.git'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Bundle 'Rip-Rip/clang_complete.git'
 
 " vim-scripts repos
 Bundle 'LustyJuggler'
 Bundle 'a.vim.git'
 "Bundle 'clang.git'
-"Bundle 'mru.vim'
+Bundle 'mru.vim'
 "Bundle 'L9'
 "Bundle 'FuzzyFinder'
 
