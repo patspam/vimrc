@@ -206,20 +206,6 @@ nmap <silent> <leader>A :A<CR>
 let g:alternateExtensions_M = "h" " Objective-c
 let g:alternateDefaultMappings = 0
 
-" Objective C
-au FileType objc compiler clang
-
-" clang_complete
-" let g:clang_user_options = "-fobjc-arc\ -framework\ Foundation"
-"let g:clang_user_options='-fblocks -isysroot /Developer/Platforms/ iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk - D__IPHONE_OS_VERSION_MIN_REQUIRED=40300' 
-let g:clang_user_options = "-fblocks -fobjc-arc"
-let g:clang_complete_copen = 1
-let g:clang_snippets_engine = "snipmate"
-let g:clang_close_preview = 1
-"let g:clang_use_library = 1
-"let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
-
-
 " ToggleList
 nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
 
