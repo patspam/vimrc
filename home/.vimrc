@@ -154,13 +154,11 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_max_files = 50000
 let g:ctrlp_by_filename = 0 " Search by filename instead of path by default
 let g:ctrlp_max_height = 20
+" let g:ctrlp_user_command = 'vimls %s'
 
 " LustyJuggler
 let g:LustyJugglerDefaultMappings = 0
 nmap <silent> <leader>l :LustyJuggler<CR>
-
-" MRU
-nmap <silent> <leader>r :MRU<CR>
 
 " Ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
