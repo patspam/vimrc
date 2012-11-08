@@ -146,14 +146,15 @@ let NERDTreeShowBookmarks=1
 
 " CtrlP
 noremap <silent> <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_working_path_mode = 0 " Don't muck with $PWD
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$',
   \ 'file': '\.exe$\|\.so$\|\.dll$',
   \ }
-let g:ctrlp_max_files = 50000
 let g:ctrlp_by_filename = 0 " Search by filename instead of path by default
+let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <C-F5>
+let g:ctrlp_max_files = 50000
 let g:ctrlp_max_height = 20
+let g:ctrlp_working_path_mode = 0 " Don't muck with $PWD
 " let g:ctrlp_user_command = 'vimls %s'
 
 " LustyJuggler
