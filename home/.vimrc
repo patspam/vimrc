@@ -89,11 +89,13 @@ au BufEnter *.html :syntax sync fromstart
 
 nnoremap <silent> <leader>c :execute "set colorcolumn=" . (&cc == "+1" ? "0" : "+1")<CR>
 nnoremap <silent> <leader>u :Bufdo checktime<CR>
-nnoremap <silent> <leader>p :set invpaste paste?<CR>
 nnoremap <silent> <C-w><C-^> :vsplit #<CR>
 nnoremap <silent> <Backspace> :nohlsearch<CR>
 nnoremap <silent> <Leader>] :execute "silent! !ctags -R" <Bar> redraw!<CR>
 nnoremap <silent> <leader>q :cw<CR>
+
+" Paste
+set pastetoggle=<F2>
 
 " Search/Replace
 nmap <leader>s :%s/\<<C-r><C-w>\>/
