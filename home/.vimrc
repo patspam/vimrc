@@ -45,8 +45,8 @@ au FileType vim setlocal textwidth=0
 " Special Chars
 nmap <silent> <leader># :set list!<CR>
 set listchars=tab:▸\·,eol:¬,trail:\·,extends:»,precedes:«
-highlight NonText ctermfg=DarkGrey
-highlight SpecialKey ctermbg=0 ctermfg=DarkRed
+highlight NonText ctermfg=DarkGrey guifg=DarkGrey
+highlight SpecialKey ctermbg=0 ctermfg=DarkRed guibg=black guifg=DarkRed
 " Demo: tab & trailing spaces should be red	text     
 
 " Jump to most recent position in file
@@ -125,19 +125,6 @@ nnoremap <leader>m :silent make\|redraw!<CR>
 " highlight DiffChange cterm=bold ctermfg=cyan ctermbg=NONE guibg=NONE
 " highlight DiffText cterm=bold ctermfg=gray ctermbg=NONE guibg=NONE
 " highlight DiffDelete cterm=bold ctermfg=red ctermbg=NONE guibg=NONE
-
-" Help in new tab
-augroup HelpInTabs
-  autocmd!
-  autocmd BufEnter *.txt call HelpInNewTab()
-
-  function! HelpInNewTab ()
-    if &buftype == 'help'
-      execute "normal \<C-W>T"
-      set colorcolumn=
-    endif
-  endfunction
-augroup END
 
 "=====[ Plugins ]=============================================================
 
