@@ -1,16 +1,13 @@
+" Required stanza
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
-" let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
-" My Bundles here:
-"
-" original repos on github
-Bundle 'Lokaltog/vim-powerline.git'
+" GitHub
 Bundle 'jnwhiteh/vim-golang.git'
 Bundle 'kien/ctrlp.vim.git'
+Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'majutsushi/tagbar.git'
 Bundle 'mileszs/ack.vim.git'
 Bundle 'milkypostman/vim-togglelist.git'
@@ -24,28 +21,9 @@ Bundle 'tpope/vim-git.git'
 Bundle 'tpope/vim-repeat.git'
 Bundle 'tpope/vim-surround.git'
 Bundle 'tpope/vim-unimpaired.git'
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'Rip-Rip/clang_complete.git'
 
 " vim-scripts repos
-Bundle 'LustyJuggler'
 Bundle 'a.vim.git'
-"Bundle 'clang.git'
+Bundle 'bufkill.vim'
+Bundle 'LustyJuggler'
 Bundle 'mru.vim'
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
-
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-" ...
-
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..

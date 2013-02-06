@@ -5,9 +5,9 @@
 
 "=====[ Pre Config ]==========================================================
 set nocompatible
+silent! source ~/.vimrc-vundle
 syntax on
 silent! source ~/.vimrc-pre
-silent! source ~/.vimrc-vundle
 filetype plugin indent on
 let mapleader = ";"
 
@@ -107,18 +107,20 @@ vmap so !sort<CR>
 " Saving files
 nmap <silent> <leader>w :w<CR>
 nmap <silent> <leader>x :bd<CR>
+nmap <silent> <leader>X :BD<CR>
 command! W w " Probbly not necessary once my fingers learn the mapping above
 
 " Alternate file
-nmap <silent> <leader>a <C-^>
-imap <silent> <C-^> <C-C>:e #<CR>
+" nmap <silent> <leader>a <C-^>
+nmap <silent> <leader>a <leader>lss
+" imap <silent> <C-^> <C-C>:e #<CR>
 
 " One-handed scrolling
 nmap <silent> <Space> <PageDown>
 nmap <silent> <M-Space> <PageUp>
 
 " Make
-nnoremap <leader>m :silent make\|redraw!<CR>
+" nnoremap <leader>m :silent make\|redraw!<CR>
 
 " Vimdiff
 " highlight DiffAdd cterm=bold ctermfg=green ctermbg=NONE guibg=NONE
@@ -148,6 +150,7 @@ let NERDTreeShowBookmarks=1
 
 " CtrlP
 noremap <silent> <leader>b :CtrlPBuffer<CR>
+nnoremap <silent> <leader>m :CtrlPMRUFiles<CR>
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$',
   \ 'file': '\.exe$\|\.so$\|\.dll$',
@@ -182,18 +185,36 @@ let g:tagbar_autoclose=1
 " set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Eclim
-" let g:EclimJavaSearchSingleResult='edit'
-" au Filetype java nnoremap <silent> <Leader>g :JavaSearchContext<CR>
-" au Filetype java nnoremap <silent> <Leader>r :JavaSearch -x reference<CR>
-" nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
+set rtp+=~/.vim/bundle/eclim
+let g:EclimProjectProblemsUpdateOnSave=0 " keep saving fast
+let g:EclimJavaDocSearchSingleResult='lopen' " Preview instead of Browser
+let g:EclimJavaSearchSingleResult='edit'
+let g:EclimJavaSearchMapping=0 " Don't bind <CR> to :JavaSearchContext
+let g:EclimJavaValidate=0 " Manually validate with :Validate instead
+" au Filetype java nnoremap <silent> <buffer> <Leader>r :JavaSearch -x reference<CR>
+" nmap <silent> <expr> <leader>jsp FS_FoldAroundTarget('\S\+\.prototype\.\w\+',{'context':0})
+au Filetype java nnoremap <silent> <buffer> <Leader>jc  :JavaCorrect<CR>
+au Filetype java nnoremap <silent> <buffer> <Leader>jdc :JavaDocComment<CR>
+au Filetype java nnoremap <silent> <buffer> <Leader>jdp :JavaDocPreview<CR>
+au Filetype java nnoremap <silent> <buffer> <Leader>jds :JavaDocSearch<CR>
+au Filetype java nnoremap <silent> <buffer> <Leader>jg  :JavaSearchContext<CR>
+au Filetype java nnoremap <silent> <buffer> <Leader>jh  :JavaHierarchy<CR>
+au Filetype java nnoremap <silent> <buffer> <Leader>ji  :JavaImport<CR>
+au Filetype java nnoremap <silent> <buffer> <Leader>jo  :JavaImportOrganize<CR>
+au Filetype java nnoremap          <buffer> <Leader>jrm :JavaMove 
+au Filetype java nnoremap <silent> <buffer> <Leader>jrp :RefactorUndoPeek<CR>
+au Filetype java nnoremap          <buffer> <Leader>jrr :JavaRename 
+au Filetype java nnoremap <silent> <buffer> <Leader>jru :RefactorUndo<CR>
+au Filetype java nnoremap <silent> <buffer> <Leader>jv  :w<CR>:Validate<CR>
+" TODO: Set up Google-style logging to Eclim's java log feature.
 
 " Foldsearch
 " Toggle on/off
 nmap <silent> <expr> <leader>z FS_ToggleFoldAroundSearch({'context':1})
 " Show only JS function defs
-nmap <silent> <expr> <leader>jsp FS_FoldAroundTarget('\S\+\.prototype\.\w\+',{'context':0})
-nmap <silent> <expr> <leader>jsf FS_FoldAroundTarget('^\s\+function\s\+\w\+(',{'context':0})
-nmap <silent> <expr> <leader>jsc FS_FoldAroundTarget('\S\+\.prototype\.\w\+\\|\/\/.*',{'context':0})
+" nmap <silent> <expr> <leader>jsp FS_FoldAroundTarget('\S\+\.prototype\.\w\+',{'context':0})
+" nmap <silent> <expr> <leader>jsf FS_FoldAroundTarget('^\s\+function\s\+\w\+(',{'context':0})
+" nmap <silent> <expr> <leader>jsc FS_FoldAroundTarget('\S\+\.prototype\.\w\+\\|\/\/.*',{'context':0})
 "nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;',{'context':1}) " Show only C #includes...
 
 " Commentary
@@ -208,7 +229,9 @@ let g:alternateExtensions_M = "h" " Objective-c
 let g:alternateDefaultMappings = 0
 
 " ToggleList
-nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
+nmap <silent> <leader>tq :call ToggleQuickfixList()<CR>
+nmap <silent> <leader>tl :call ToggleLocationList()<CR>
+nmap <silent> <leader>tp :pclose<CR>
 
 "=====[ Functions ]===========================================================
 
