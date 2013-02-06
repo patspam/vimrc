@@ -21,6 +21,7 @@ Bundle 'tpope/vim-git.git'
 Bundle 'tpope/vim-repeat.git'
 Bundle 'tpope/vim-surround.git'
 Bundle 'tpope/vim-unimpaired.git'
+Bundle 'altercation/vim-colors-solarized.git'
 
 " vim-scripts repos
 Bundle 'a.vim.git'
