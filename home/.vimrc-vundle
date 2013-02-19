@@ -5,6 +5,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " GitHub
+Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'jnwhiteh/vim-golang.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'Lokaltog/vim-powerline.git'
@@ -13,6 +14,7 @@ Bundle 'mileszs/ack.vim.git'
 Bundle 'milkypostman/vim-togglelist.git'
 Bundle 'msanders/snipmate.vim.git'
 Bundle 'nacitar/a.vim.git'
+Bundle 'niklasb/bufkill.vim.git'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'tpope/vim-abolish.git'
 Bundle 'tpope/vim-commentary.git'
@@ -21,10 +23,8 @@ Bundle 'tpope/vim-git.git'
 Bundle 'tpope/vim-repeat.git'
 Bundle 'tpope/vim-surround.git'
 Bundle 'tpope/vim-unimpaired.git'
-Bundle 'altercation/vim-colors-solarized.git'
 
 " vim-scripts repos
 Bundle 'a.vim.git'
-Bundle 'bufkill.vim'
 Bundle 'LustyJuggler'
 Bundle 'mru.vim'

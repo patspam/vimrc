@@ -106,9 +106,8 @@ vmap so !sort<CR>
 
 " Saving files
 nmap <silent> <leader>w :w<CR>
-nmap <silent> <leader>x :bd<CR>
-nmap <silent> <leader>X :BD<CR>
-command! W w " Probbly not necessary once my fingers learn the mapping above
+nmap <silent> <leader>x :BD<CR>
+nmap <silent> <leader>X :bd<CR>
 
 " Alternate file
 " nmap <silent> <leader>a <C-^>
@@ -216,6 +215,7 @@ let g:alternateExtensions_M = "h" " Objective-c
 let g:alternateDefaultMappings = 0
 
 " ToggleList
+let g:toggle_list_no_mappings=1
 nmap <silent> <leader>tq :call ToggleQuickfixList()<CR>
 nmap <silent> <leader>tl :call ToggleLocationList()<CR>
 nmap <silent> <leader>tp :pclose<CR>
