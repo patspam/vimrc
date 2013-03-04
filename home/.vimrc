@@ -217,6 +217,7 @@ nmap <silent> <leader>tp :pclose<CR>
 
 " YouCompleteMe
 let g:ycm_filetype_specific_completion_to_disable = {'cpp': 1, 'c': 1}
+let g:ycm_key_detailed_diagnostics = ''
 
 "=====[ Functions ]===========================================================
 
