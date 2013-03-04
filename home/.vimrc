@@ -28,7 +28,7 @@ set showcmd " Show (partial) command in status line
 set showmatch " Show matching brackets
 set smartcase " Do smart case matching
 set splitright
-set synmaxcol=200 " Helps prevent vim from choking on long lines
+set synmaxcol=400 " Helps prevent vim from choking on long lines
 set virtualedit=block "Square up visual selections
 set wildmenu
 
@@ -165,11 +165,6 @@ let g:Powerline_symbols="fancy"
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 let g:tagbar_autoclose=1
 
-" Fugitive
-" set laststatus=2
-" set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P " Vim default
-" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-
 " Eclim
 set rtp+=~/.vim/bundle/eclim
 let g:EclimProjectProblemsUpdateOnSave=0 " keep saving fast
@@ -219,6 +214,9 @@ let g:toggle_list_no_mappings=1
 nmap <silent> <leader>tq :call ToggleQuickfixList()<CR>
 nmap <silent> <leader>tl :call ToggleLocationList()<CR>
 nmap <silent> <leader>tp :pclose<CR>
+
+" YouCompleteMe
+let g:ycm_filetype_specific_completion_to_disable = {'cpp': 1, 'c': 1}
 
 "=====[ Functions ]===========================================================
 
