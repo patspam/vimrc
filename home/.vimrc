@@ -3,6 +3,8 @@
 " Patrick Donelan
 "
 
+" Good normal mode keys left to remap: -
+
 "=====[ Pre Config ]==========================================================
 set nocompatible
 silent! source ~/.vimrc-vundle
@@ -117,6 +119,9 @@ nmap <silent> <leader>a <leader>lss
 " One-handed scrolling
 nmap <silent> <Space> <PageDown>
 nmap <silent> <M-Space> <PageUp>
+
+" Select last pasted/modified text (from vim.wikia.com)
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Make
 " nnoremap <leader>m :silent make\|redraw!<CR>
