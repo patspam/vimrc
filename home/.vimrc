@@ -42,7 +42,6 @@ augroup VimReload
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 nmap <silent> <leader>v :next $MYVIMRC<CR>
-au FileType vim setlocal textwidth=0
 
 " Special Chars
 nmap <silent> <leader># :set list!<CR>
@@ -78,6 +77,8 @@ vmap <silent> <C-R> <ESC><C-R>gv
 " Line width
 au FileType java setlocal textwidth=100 colorcolumn=+1
 au FileType javascript setlocal textwidth=80 colorcolumn=+1
+au FileType objc,objcpp setlocal textwidth=80 colorcolumn=+1
+au FileType vim setlocal textwidth=0
 
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
 au FileType javascript setlocal formatoptions+=t
@@ -205,6 +206,7 @@ nmap <silent> <expr> <leader>z FS_ToggleFoldAroundSearch({'context':1})
 
 " Commentary
 nmap <silent> <C-\> <Plug>CommentaryLine
+au Filetype objc,objcpp set commentstring=//%s
 
 " Matchit (bundled with vim)
 :runtime macros/matchit.vim
