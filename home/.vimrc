@@ -3,8 +3,6 @@
 " Patrick Donelan
 "
 
-" Good normal mode keys left to remap: -
-
 "=====[ Pre Config ]==========================================================
 set nocompatible
 silent! source ~/.vimrc-vundle
@@ -172,37 +170,27 @@ nnoremap <silent> <Leader>t :TagbarToggle<CR>
 let g:tagbar_autoclose=1
 
 " Eclim
-set rtp+=~/.vim/bundle/eclim
-let g:EclimProjectProblemsUpdateOnSave=0 " keep saving fast
-let g:EclimJavaDocSearchSingleResult='lopen' " Preview instead of Browser
-let g:EclimJavaSearchSingleResult='edit'
-let g:EclimJavaSearchMapping=0 " Don't bind <CR> to :JavaSearchContext
-let g:EclimJavaValidate=0 " Manually validate with :Validate instead
-" au Filetype java nnoremap <silent> <buffer> <Leader>r :JavaSearch -x reference<CR>
-" nmap <silent> <expr> <leader>jsp FS_FoldAroundTarget('\S\+\.prototype\.\w\+',{'context':0})
-au Filetype java nnoremap <silent> <buffer> <Leader>jc  :JavaCorrect<CR>
-au Filetype java nnoremap <silent> <buffer> <Leader>jdc :JavaDocComment<CR>
-au Filetype java nnoremap <silent> <buffer> <Leader>jdp :JavaDocPreview<CR>
-au Filetype java nnoremap <silent> <buffer> <Leader>jds :JavaDocSearch<CR>
-au Filetype java nnoremap <silent> <buffer> <Leader>jg  :JavaSearchContext<CR>
-au Filetype java nnoremap <silent> <buffer> <Leader>jh  :JavaHierarchy<CR>
-au Filetype java nnoremap <silent> <buffer> <Leader>ji  :JavaImport<CR>
-au Filetype java nnoremap <silent> <buffer> <Leader>jo  :JavaImportOrganize<CR>
-au Filetype java nnoremap          <buffer> <Leader>jrm :JavaMove 
-au Filetype java nnoremap <silent> <buffer> <Leader>jrp :RefactorUndoPeek<CR>
-au Filetype java nnoremap          <buffer> <Leader>jrr :JavaRename 
-au Filetype java nnoremap <silent> <buffer> <Leader>jru :RefactorUndo<CR>
-au Filetype java nnoremap <silent> <buffer> <Leader>jv  :w<CR>:Validate<CR>
-" TODO: Set up Google-style logging to Eclim's java log feature.
-
-" Foldsearch
-" Toggle on/off
-nmap <silent> <expr> <leader>z FS_ToggleFoldAroundSearch({'context':1})
-" Show only JS function defs
-" nmap <silent> <expr> <leader>jsp FS_FoldAroundTarget('\S\+\.prototype\.\w\+',{'context':0})
-" nmap <silent> <expr> <leader>jsf FS_FoldAroundTarget('^\s\+function\s\+\w\+(',{'context':0})
-" nmap <silent> <expr> <leader>jsc FS_FoldAroundTarget('\S\+\.prototype\.\w\+\\|\/\/.*',{'context':0})
-"nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;',{'context':1}) " Show only C #includes...
+" set rtp+=~/.vim/bundle/eclim
+" let g:EclimProjectProblemsUpdateOnSave=0 " keep saving fast
+" let g:EclimJavaDocSearchSingleResult='lopen' " Preview instead of Browser
+" let g:EclimJavaSearchSingleResult='edit'
+" let g:EclimJavaSearchMapping=0 " Don't bind <CR> to :JavaSearchContext
+" let g:EclimJavaValidate=0 " Manually validate with :Validate instead
+" " au Filetype java nnoremap <silent> <buffer> <Leader>r :JavaSearch -x reference<CR>
+" " nmap <silent> <expr> <leader>jsp FS_FoldAroundTarget('\S\+\.prototype\.\w\+',{'context':0})
+" au Filetype java nnoremap <silent> <buffer> <Leader>jc  :JavaCorrect<CR>
+" au Filetype java nnoremap <silent> <buffer> <Leader>jdc :JavaDocComment<CR>
+" au Filetype java nnoremap <silent> <buffer> <Leader>jdp :JavaDocPreview<CR>
+" au Filetype java nnoremap <silent> <buffer> <Leader>jds :JavaDocSearch<CR>
+" au Filetype java nnoremap <silent> <buffer> <Leader>jg  :JavaSearchContext<CR>
+" au Filetype java nnoremap <silent> <buffer> <Leader>jh  :JavaHierarchy<CR>
+" au Filetype java nnoremap <silent> <buffer> <Leader>ji  :JavaImport<CR>
+" au Filetype java nnoremap <silent> <buffer> <Leader>jo  :JavaImportOrganize<CR>
+" au Filetype java nnoremap          <buffer> <Leader>jrm :JavaMove 
+" au Filetype java nnoremap <silent> <buffer> <Leader>jrp :RefactorUndoPeek<CR>
+" au Filetype java nnoremap          <buffer> <Leader>jrr :JavaRename 
+" au Filetype java nnoremap <silent> <buffer> <Leader>jru :RefactorUndo<CR>
+" au Filetype java nnoremap <silent> <buffer> <Leader>jv  :w<CR>:Validate<CR>
 
 " Commentary
 nmap <silent> <C-\> <Plug>CommentaryLine
