@@ -80,7 +80,7 @@ vmap <silent> <C-R> <ESC><C-R>gv
 " Line width
 au FileType java setlocal textwidth=100 colorcolumn=+1
 au FileType javascript setlocal textwidth=80 colorcolumn=+1
-au FileType objc,objcpp setlocal textwidth=80 colorcolumn=+1
+au FileType objc,objcpp setlocal textwidth=100 colorcolumn=+1
 au FileType vim setlocal textwidth=0
 
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
@@ -152,7 +152,7 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_by_filename = 0 " Search by filename instead of path by default
 let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <C-F5>
-let g:ctrlp_max_files = 50000
+let g:ctrlp_max_files = 100000
 let g:ctrlp_max_height = 20
 let g:ctrlp_working_path_mode = 0 " Don't muck with $PWD
 " let g:ctrlp_user_command = 'vimls %s'
@@ -216,8 +216,11 @@ nmap <silent> <leader>tl :call ToggleLocationList()<CR>
 nmap <silent> <leader>tp :pclose<CR>
 
 " YouCompleteMe
-let g:ycm_filetype_specific_completion_to_disable = {'cpp': 1, 'c': 1}
-let g:ycm_key_detailed_diagnostics = ''
+" let g:ycm_filetype_specific_completion_to_disable = {'cpp': 1, 'c': 1}
+" let g:ycm_key_detailed_diagnostics = ''
+nnoremap <silent> <leader>ycg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <silent> <f5> :YcmForceCompileAndDiagnostics<CR>
+au Filetype cpp,objcpp nnoremap <silent> <buffer> <Leader>jd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "=====[ Functions ]===========================================================
 
@@ -238,6 +241,15 @@ function! Enter()
     execute "normal! \<CR>"
   endif
 endfunction
+
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+command! DiffSaved call s:DiffWithSaved()
 
 " Post-config
 silent! source ~/.vimrc-post

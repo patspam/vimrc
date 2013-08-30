@@ -5,6 +5,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " GitHub
+"Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'altercation/vim-colors-solarized.git'
@@ -30,3 +31,4 @@ Bundle 'tpope/vim-unimpaired.git'
 Bundle 'a.vim.git'
 Bundle 'LustyJuggler'
 Bundle 'mru.vim'
+Bundle 'patchreview.vim'
