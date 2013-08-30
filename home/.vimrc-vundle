@@ -6,7 +6,7 @@ Bundle 'gmarik/vundle'
 
 " GitHub
 Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'jnwhiteh/vim-golang.git'
 Bundle 'kien/ctrlp.vim.git'

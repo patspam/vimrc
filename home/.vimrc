@@ -48,6 +48,11 @@ highlight NonText ctermfg=DarkGrey guifg=DarkGrey
 highlight SpecialKey ctermbg=0 ctermfg=DarkRed guibg=black guifg=DarkRed
 " Demo: tab & trailing spaces should be red	text     
 
+" gutters
+highlight SignColumn ctermbg=233
+let g:gitgutter_sign_column_always = 1
+" Also: :GitGutterLineHighlightsToggle, [h, ]h
+
 " Jump to most recent position in file
 au BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
               \|    exe "normal! g`\""
@@ -95,7 +100,7 @@ nnoremap <silent> <Backspace> :nohlsearch<CR>
 nnoremap <silent> <Leader>] :execute "silent! !ctags -R" <Bar> redraw!<CR>
 nnoremap <silent> <leader>q :cw<CR>
 
-" Paste
+" Paste (best to use 'yp' or 'yP' to enter temporary insert paste mode)
 set pastetoggle=<F2>
 
 " Search/Replace
@@ -194,7 +199,7 @@ let g:tagbar_autoclose=1
 
 " Commentary
 nmap <silent> <C-\> <Plug>CommentaryLine
-au Filetype objc,objcpp set commentstring=//%s
+au Filetype objc,objcpp,html set commentstring=//%s
 
 " Matchit (bundled with vim)
 :runtime macros/matchit.vim
