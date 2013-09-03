@@ -86,6 +86,10 @@ au FileType java setlocal textwidth=100 colorcolumn=+1
 au FileType javascript setlocal textwidth=80 colorcolumn=+1
 au FileType objc,objcpp setlocal textwidth=100 colorcolumn=+1
 au FileType vim setlocal textwidth=0
+hi ColorColumn ctermbg=233
+
+" Auto-increment
+" Use <c-A> a
 
 " Objective-C
 au FileType objcpp set filetype=objc
