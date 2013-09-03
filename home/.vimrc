@@ -57,6 +57,12 @@ let g:gitgutter_sign_column_always = 1
 let g:gitgutter_diff_args = 'm'
 let g:gitgutter_realtime = 0 " Only update on save
 
+" Colours
+hi VertSplit ctermfg=233 ctermbg=239 " NB. dotted grey line drawn in bg colour
+hi TabLineFill ctermfg=233
+hi TabLine ctermbg=233
+hi TabLineSel ctermbg=0
+
 " Jump to most recent position in file
 au BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
               \|    exe "normal! g`\""
