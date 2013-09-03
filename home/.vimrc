@@ -44,14 +44,18 @@ nmap <silent> <leader>v :next $MYVIMRC<CR>
 " Special Chars
 nmap <silent> <leader># :set list!<CR>
 set listchars=tab:▸\·,eol:¬,trail:\·,extends:»,precedes:«
-highlight NonText ctermfg=DarkGrey guifg=DarkGrey
+highlight NonText ctermfg=239 guifg=DarkGrey
 highlight SpecialKey ctermbg=0 ctermfg=DarkRed guibg=black guifg=DarkRed
 " Demo: tab & trailing spaces should be red	text     
 
-" gutters
+" Gutters (navigate hunks with ]h, [h)
 highlight SignColumn ctermbg=233
+highlight GitGutterAdd ctermbg=233 ctermfg=2 guifg=#009900
+highlight GitGutterChange ctermbg=233 ctermfg=3 guifg=#bbbb00
+highlight GitGutterDelete ctermbg=233 ctermfg=1 guifg=#ff2222
 let g:gitgutter_sign_column_always = 1
-" Also: :GitGutterLineHighlightsToggle, [h, ]h
+let g:gitgutter_diff_args = 'm'
+let g:gitgutter_realtime = 0 " Only update on save
 
 " Jump to most recent position in file
 au BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
@@ -82,6 +86,9 @@ au FileType java setlocal textwidth=100 colorcolumn=+1
 au FileType javascript setlocal textwidth=80 colorcolumn=+1
 au FileType objc,objcpp setlocal textwidth=100 colorcolumn=+1
 au FileType vim setlocal textwidth=0
+
+" Objective-C
+au FileType objcpp set filetype=objc
 
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
 au FileType javascript setlocal formatoptions+=t
