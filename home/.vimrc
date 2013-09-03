@@ -268,5 +268,8 @@ function! s:DiffWithSaved()
 endfunction
 command! DiffSaved call s:DiffWithSaved()
 
+" Expand width of window to length of largest line (handy for NERDTree)
+nnoremap z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'len(v:val)')) + 1)<cr>
+
 " Post-config
 silent! source ~/.vimrc-post
