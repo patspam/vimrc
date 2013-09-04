@@ -158,7 +158,7 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 " NERDTree
 nnoremap <silent> <Leader>d :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>f :NERDTreeFind<CR>
-let NERDTreeShowBookmarks=1
+let NERDTreeShowBookmarks=0
 
 " CtrlP
 noremap <silent> <leader>b :CtrlPBuffer<CR>
@@ -269,7 +269,7 @@ endfunction
 command! DiffSaved call s:DiffWithSaved()
 
 " Expand width of window to length of largest line (handy for NERDTree)
-nnoremap z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'len(v:val)')) + 1)<cr>
+nnoremap <silent> z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'len(v:val)')) + 1)<cr>
 
 " Post-config
 silent! source ~/.vimrc-post
