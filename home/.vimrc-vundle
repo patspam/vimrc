@@ -6,10 +6,10 @@ Bundle 'gmarik/vundle'
 
 " GitHub
 "Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'b4winckler/vim-objc'
+Bundle 'bling/vim-airline'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'

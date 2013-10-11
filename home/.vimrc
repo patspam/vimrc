@@ -181,11 +181,11 @@ nmap <silent> <leader>l :LustyJuggler<CR>
 " Ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
-" Powerline
+" Airline
 set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show unicode glyphs
-let g:Powerline_stl_path_style="short"
-let g:Powerline_symbols="fancy"
+set noshowmode
+" set encoding=utf-8 " Necessary to show unicode glyphs
+let g:airline_powerline_fonts=1
 
 " TagBar
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
@@ -208,9 +208,9 @@ let g:tagbar_autoclose=1
 " au Filetype java nnoremap <silent> <buffer> <Leader>jh  :JavaHierarchy<CR>
 " au Filetype java nnoremap <silent> <buffer> <Leader>ji  :JavaImport<CR>
 " au Filetype java nnoremap <silent> <buffer> <Leader>jo  :JavaImportOrganize<CR>
-" au Filetype java nnoremap          <buffer> <Leader>jrm :JavaMove 
+" au Filetype java nnoremap          <buffer> <Leader>jrm :JavaMove
 " au Filetype java nnoremap <silent> <buffer> <Leader>jrp :RefactorUndoPeek<CR>
-" au Filetype java nnoremap          <buffer> <Leader>jrr :JavaRename 
+" au Filetype java nnoremap          <buffer> <Leader>jrr :JavaRename
 " au Filetype java nnoremap <silent> <buffer> <Leader>jru :RefactorUndo<CR>
 " au Filetype java nnoremap <silent> <buffer> <Leader>jv  :w<CR>:Validate<CR>
 
