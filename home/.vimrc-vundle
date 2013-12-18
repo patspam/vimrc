@@ -5,7 +5,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " GitHub
-"Bundle 'scrooloose/syntastic'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'b4winckler/vim-objc'
@@ -20,6 +19,7 @@ Bundle 'nacitar/a.vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'niklasb/bufkill.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'

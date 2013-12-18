@@ -42,7 +42,7 @@ augroup END
 nmap <silent> <leader>v :next $MYVIMRC<CR>
 
 " Special Chars
-nmap <silent> <leader># :set list!<CR>
+nmap <silent> <tab># :set list!<CR>
 set listchars=tab:▸\·,eol:¬,trail:\·,extends:»,precedes:«
 highlight NonText ctermfg=239 guifg=DarkGrey
 highlight SpecialKey ctermbg=0 ctermfg=DarkRed guibg=black guifg=DarkRed
@@ -98,7 +98,7 @@ hi ColorColumn ctermbg=233
 " Use <c-A> a
 
 " Objective-C
-au FileType objcpp set filetype=objc
+"au FileType objcpp set filetype=objc
 
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
 au FileType javascript setlocal formatoptions+=t
@@ -110,7 +110,7 @@ au CursorHold,BufWinEnter * checktime
 " Fix js syntax highlighting within html files (otherwise breaks after :e)
 au BufEnter *.html :syntax sync fromstart
 
-nnoremap <silent> <leader>c :execute "set colorcolumn=" . (&cc == "+1" ? "0" : "+1")<CR>
+nnoremap <silent> <tab>c :execute "set colorcolumn=" . (&cc == "+1" ? "0" : "+1")<CR>
 nnoremap <silent> <leader>u :Bufdo checktime<CR>
 nnoremap <silent> <C-w><C-^> :vsplit #<CR>
 nnoremap <silent> <Backspace> :nohlsearch<CR>
@@ -156,8 +156,8 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 "=====[ Plugins ]=============================================================
 
 " NERDTree
-nnoremap <silent> <Leader>d :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>f :NERDTreeFind<CR>
+nnoremap <silent> <tab>d :NERDTreeToggle<CR>
+nnoremap <silent> <tab>f :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=0
 
 " CtrlP
@@ -185,10 +185,11 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 set laststatus=2   " Always show the statusline
 set noshowmode
 " set encoding=utf-8 " Necessary to show unicode glyphs
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#syntastic#enabled = 1
 
 " TagBar
-nnoremap <silent> <Leader>t :TagbarToggle<CR>
+nnoremap <silent> <tab>o :TagbarToggle<CR>
 let g:tagbar_autoclose=1
 
 " Eclim
@@ -228,16 +229,23 @@ let g:alternateDefaultMappings = 0
 
 " ToggleList
 let g:toggle_list_no_mappings=1
-nmap <silent> <leader>tq :call ToggleQuickfixList()<CR>
-nmap <silent> <leader>tl :call ToggleLocationList()<CR>
-nmap <silent> <leader>tp :pclose<CR>
+nmap <silent> <tab>q :call ToggleQuickfixList()<CR>
+nmap <silent> <tab>l :call ToggleLocationList()<CR>
+nmap <silent> <tab>p :pclose<CR>
 
 " YouCompleteMe
 " let g:ycm_filetype_specific_completion_to_disable = {'cpp': 1, 'c': 1}
 " let g:ycm_key_detailed_diagnostics = ''
-nnoremap <silent> <leader>ycg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <silent> <f5> :YcmForceCompileAndDiagnostics<CR>
-au Filetype cpp,objcpp nnoremap <silent> <buffer> <Leader>jd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" nnoremap <silent> <leader>ycg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" nnoremap <silent> <f5> :YcmForceCompileAndDiagnostics<CR>
+" au Filetype cpp,objc,objcpp nnoremap <silent> <buffer> <Leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Syntastic
+let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
+nnoremap <tab>s :SyntasticToggle<CR>
+"au Filetype java nnoremap <silent> <buffer> <Leader>js :SyntasticCheck<CR>
 
 "=====[ Functions ]===========================================================
 
@@ -250,6 +258,7 @@ function! BufDo(command)
 endfunction
 command! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
 
+nnoremap <silent> K a<CR><ESC>k$
 nmap <silent> <CR> :call Enter()<CR>
 function! Enter()
   if (&modifiable)
