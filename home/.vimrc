@@ -88,9 +88,8 @@ vmap <silent> u <ESC>ugv
 vmap <silent> <C-R> <ESC><C-R>gv
 
 " Line width
-au FileType java setlocal textwidth=100 colorcolumn=+1
+au FileType java,objc,objcpp setlocal textwidth=100 colorcolumn=+1
 au FileType javascript setlocal textwidth=80 colorcolumn=+1
-au FileType objc,objcpp setlocal textwidth=100 colorcolumn=+1
 au FileType vim setlocal textwidth=0
 hi ColorColumn ctermbg=233
 
@@ -244,6 +243,7 @@ nmap <silent> <tab>p :pclose<CR>
 " Syntastic
 nnoremap <tab>s :SyntasticToggle<CR>
 let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_java_checkers = ['javac', 'checkstyle']
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
 let g:syntastic_error_symbol = '✗'
