@@ -172,6 +172,7 @@ let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <C-F5>
 let g:ctrlp_max_files = 100000
 let g:ctrlp_max_height = 20
 let g:ctrlp_working_path_mode = 0 " Don't muck with $PWD
+let g:ctrlp_lazy_update = 1
 " let g:ctrlp_user_command = 'vimls %s'
 
 " LustyJuggler
