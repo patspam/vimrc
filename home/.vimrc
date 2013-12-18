@@ -185,9 +185,9 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 " Airline
 set laststatus=2   " Always show the statusline
 set noshowmode
-" set encoding=utf-8 " Necessary to show unicode glyphs
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
 
 " TagBar
 nnoremap <silent> <tab>o :TagbarToggle<CR>
@@ -242,11 +242,12 @@ nmap <silent> <tab>p :pclose<CR>
 " au Filetype cpp,objc,objcpp nnoremap <silent> <buffer> <Leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Syntastic
+nnoremap <tab>s :SyntasticToggle<CR>
 let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
-nnoremap <tab>s :SyntasticToggle<CR>
-"au Filetype java nnoremap <silent> <buffer> <Leader>js :SyntasticCheck<CR>
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
 
 "=====[ Functions ]===========================================================
 
