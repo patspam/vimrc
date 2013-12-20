@@ -56,6 +56,9 @@ highlight GitGutterDelete ctermbg=233 ctermfg=1 guifg=#ff2222
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_diff_args = 'm'
 let g:gitgutter_realtime = 0 " Only update on save
+nnoremap <tab>g :let g:gitgutter_diff_args = 'm'<left><left>
+
+nmap <tab><tab> <tab>d<tab>o<c-w>h
 
 " Colours
 hi VertSplit ctermfg=233 ctermbg=239 " NB. dotted grey line drawn in bg colour
