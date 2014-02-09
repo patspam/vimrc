@@ -105,6 +105,9 @@ hi ColorColumn ctermbg=233
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
 au FileType javascript setlocal formatoptions+=t
 
+" Markdown
+au BufNewFile,BufRead *.md set ft=markdown
+
 " File changes
 set autoread
 au CursorHold,BufWinEnter * checktime
