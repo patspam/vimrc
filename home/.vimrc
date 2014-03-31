@@ -102,7 +102,7 @@ hi ColorColumn ctermbg=233
 " Use <c-A> a
 
 " Objective-C
-au FileType objc,objcpp nnoremap <buffer> <leader>jl :cexpr system('/google/data/ro/teams/devtools/glint/linters/live/objclinter.par ' . expand("%"))<cr>
+au FileType objc,objcpp nnoremap <buffer> <leader>jl :cexpr system(g:objclinter . " " . expand("%"))<cr>
 
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
 " au FileType javascript setlocal formatoptions+=t
