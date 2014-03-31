@@ -57,6 +57,9 @@ highlight GitGutterDelete ctermbg=233 ctermfg=1 guifg=#ff2222
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_diff_args = ''
 let g:gitgutter_realtime = 0 " Only update on save
+nnoremap <tab>g :let g:gitgutter_diff_args = 'm'<left><left>
+
+nmap <tab><tab> <tab>d<tab>o<c-w>h
 
 " Colours
 hi VertSplit ctermfg=233 ctermbg=239 " NB. dotted grey line drawn in bg colour
@@ -103,6 +106,9 @@ au FileType objc,objcpp nnoremap <buffer> <leader>jl :cexpr system('/google/data
 
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
 " au FileType javascript setlocal formatoptions+=t
+
+" Markdown
+au BufNewFile,BufRead *.md set ft=markdown
 
 " File changes
 set autoread
