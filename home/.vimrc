@@ -29,8 +29,9 @@ set showmatch " Show matching brackets
 set smartcase " Do smart case matching
 set splitright
 set synmaxcol=400 " Helps prevent vim from choking on long lines
-set virtualedit=block "Square up visual selections
+set virtualedit=block " Square up visual selections
 set wildmenu
+set completeopt-=preview
 
 "=====[ Stuff ]===============================================================
 
@@ -91,16 +92,13 @@ vmap <silent> u <ESC>ugv
 vmap <silent> <C-R> <ESC><C-R>gv
 
 " Line width
-au FileType java,objc,objcpp setlocal textwidth=100 colorcolumn=+1
+au FileType java,c,cpp,objc,objcpp setlocal textwidth=100 colorcolumn=+1
 au FileType javascript setlocal textwidth=80 colorcolumn=+1
 au FileType vim setlocal textwidth=0
 hi ColorColumn ctermbg=233
 
 " Auto-increment
 " Use <c-A> a
-
-" Objective-C
-"au FileType objcpp set filetype=objc
 
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
 au FileType javascript setlocal formatoptions+=t
@@ -191,7 +189,7 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 set laststatus=2   " Always show the statusline
 set noshowmode
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#syntastic#enabled = 1
+" let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 
 " TagBar
@@ -223,7 +221,7 @@ let g:tagbar_autoclose=1
 
 " Commentary
 nmap <silent> <C-\> <Plug>CommentaryLine
-au Filetype objc,objcpp,html set commentstring=//%s
+au Filetype objc,c,cpp,objc,objcpp,html set commentstring=//%s
 
 " Matchit (bundled with vim)
 :runtime macros/matchit.vim
@@ -240,20 +238,23 @@ nmap <silent> <tab>l :call ToggleLocationList()<CR>
 nmap <silent> <tab>p :pclose<CR>
 
 " YouCompleteMe
-" let g:ycm_filetype_specific_completion_to_disable = {'cpp': 1, 'c': 1}
-" let g:ycm_key_detailed_diagnostics = ''
-" nnoremap <silent> <leader>ycg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" nnoremap <silent> <f5> :YcmForceCompileAndDiagnostics<CR>
-" au Filetype cpp,objc,objcpp nnoremap <silent> <buffer> <Leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+au Filetype c,cpp,objc,objcpp nnoremap <silent> <buffer> <Leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+au Filetype c,cpp,objc,objcpp nnoremap <silent> <buffer> <F5> :YcmForceCompileAndDiagnostics<CR>
+let g:ycm_global_ycm_extra_conf = '/Users/pdonelan/g/ritz/google3/googlemac/iPhone/Drive/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_always_populate_location_list = 1
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-j>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-k>']
 
 " Syntastic
-nnoremap <tab>s :SyntasticToggle<CR>
-let g:syntastic_mode_map = { 'mode': 'passive' }
-let g:syntastic_java_checkers = ['javac', 'checkstyle']
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
+" nnoremap <tab>s :SyntasticToggle<CR>
+" let g:syntastic_mode_map = { 'mode': 'passive' }
+" let g:syntastic_java_checkers = ['javac', 'checkstyle']
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_enable_signs = 1
+" let g:syntastic_error_symbol = '✗'
+" let g:syntastic_warning_symbol = '⚠'
 
 "=====[ Functions ]===========================================================
 
