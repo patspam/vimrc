@@ -9,6 +9,7 @@ silent! source ~/.vimrc-vundle
 syntax on
 silent! source ~/.vimrc-pre
 filetype plugin indent on
+nnoremap <silent> <space> ;
 let mapleader = ";"
 
 "=====[ General Settings ]====================================================
@@ -55,7 +56,7 @@ highlight GitGutterAdd ctermbg=233 ctermfg=2 guifg=#009900
 highlight GitGutterChange ctermbg=233 ctermfg=3 guifg=#bbbb00
 highlight GitGutterDelete ctermbg=233 ctermfg=1 guifg=#ff2222
 let g:gitgutter_sign_column_always = 1
-let g:gitgutter_diff_args = 'm'
+let g:gitgutter_diff_args = ''
 let g:gitgutter_realtime = 0 " Only update on save
 nnoremap <tab>g :let g:gitgutter_diff_args = 'm'<left><left>
 
@@ -100,8 +101,11 @@ hi ColorColumn ctermbg=233
 " Auto-increment
 " Use <c-A> a
 
+" Objective-C
+au FileType objc,objcpp nnoremap <buffer> <leader>jl :cexpr system('/google/data/ro/teams/devtools/glint/linters/live/objclinter.par ' . expand("%"))<cr>
+
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
-au FileType javascript setlocal formatoptions+=t
+" au FileType javascript setlocal formatoptions+=t
 
 " Markdown
 au BufNewFile,BufRead *.md set ft=markdown
@@ -141,8 +145,8 @@ nmap <silent> <leader>a <leader>lss
 " imap <silent> <C-^> <C-C>:e #<CR>
 
 " One-handed scrolling
-nmap <silent> <Space> <PageDown>
-nmap <silent> <M-Space> <PageUp>
+" nmap <silent> <Space> <PageDown>
+" nmap <silent> <M-Space> <PageUp>
 
 " Select last pasted/modified text (from vim.wikia.com)
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
