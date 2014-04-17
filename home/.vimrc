@@ -56,9 +56,9 @@ highlight GitGutterAdd ctermbg=233 ctermfg=2 guifg=#009900
 highlight GitGutterChange ctermbg=233 ctermfg=3 guifg=#bbbb00
 highlight GitGutterDelete ctermbg=233 ctermfg=1 guifg=#ff2222
 let g:gitgutter_sign_column_always = 1
-let g:gitgutter_diff_args = ''
+let g:gitgutter_diff_args = 'm'
 let g:gitgutter_realtime = 0 " Only update on save
-nnoremap <tab>g :let g:gitgutter_diff_args = 'm'<left><left>
+nnoremap <tab>g :let g:gitgutter_diff_args = 'clang'
 
 nmap <tab><tab> <tab>d<tab>o<c-w>h
 
@@ -241,7 +241,7 @@ nmap <silent> <tab>q :call ToggleQuickfixList()<CR>
 nmap <silent> <tab>l :call ToggleLocationList()<CR>
 nmap <silent> <tab>p :pclose<CR>
 
-" YouCompleteMe
+" YouCompleteMe (YCM)
 au Filetype c,cpp,objc,objcpp nnoremap <silent> <buffer> <Leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 au Filetype c,cpp,objc,objcpp nnoremap <silent> <buffer> <F5> :YcmForceCompileAndDiagnostics<CR>
 let g:ycm_global_ycm_extra_conf = '/Users/pdonelan/g/ritz/google3/googlemac/iPhone/Drive/.ycm_extra_conf.py'
@@ -250,6 +250,7 @@ let g:ycm_always_populate_location_list = 1
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-k>']
+let g:ycm_filetype_specific_completion_to_disable = { 'java': 1 }
 
 " Syntastic
 " nnoremap <tab>s :SyntasticToggle<CR>
