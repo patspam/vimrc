@@ -97,8 +97,7 @@ vmap <silent> u <ESC>ugv
 vmap <silent> <C-R> <ESC><C-R>gv
 
 " Line width
-au FileType java,c,cpp,objc,objcpp setlocal textwidth=100 colorcolumn=+1
-au FileType javascript setlocal textwidth=80 colorcolumn=+1
+au FileType javascript,java,c,cpp,objc,objcpp setlocal textwidth=100 colorcolumn=+1
 au FileType vim setlocal textwidth=0
 hi ColorColumn ctermbg=233
 
@@ -302,5 +301,5 @@ command! DiffSaved call s:DiffWithSaved()
 " Expand width of window to length of largest line (handy for NERDTree)
 nnoremap <silent> z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'len(v:val)')) + 1)<cr>
 
-" Post-config
-silent! source ~/.vimrc-post
+" Google
+silent! source ~/.vimrc-google
