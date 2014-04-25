@@ -50,6 +50,9 @@ highlight NonText ctermfg=239 guifg=DarkGrey
 highlight SpecialKey ctermbg=0 ctermfg=DarkRed guibg=black guifg=DarkRed
 " Demo: tab & trailing spaces should be red	text     
 
+" Typos
+command! -bang Q q<bang>
+
 " Gutters (navigate hunks with ]h, [h)
 highlight SignColumn ctermbg=233
 highlight GitGutterAdd ctermbg=233 ctermfg=2 guifg=#009900
@@ -68,9 +71,6 @@ nmap <tab><tab> <tab>d<tab>o<c-w>h
 
 " Colours
 hi VertSplit ctermfg=233 ctermbg=239 " NB. dotted grey line drawn in bg colour
-hi TabLineFill ctermfg=233
-hi TabLine ctermbg=233
-hi TabLineSel ctermbg=0
 
 " Jump to most recent position in file
 au BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
@@ -154,14 +154,8 @@ nmap <silent> <leader>a <leader>lss
 " Select last pasted/modified text (from vim.wikia.com)
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-" Make
-" nnoremap <leader>m :silent make\|redraw!<CR>
-
-" Vimdiff
-" highlight DiffAdd cterm=bold ctermfg=green ctermbg=NONE guibg=NONE
-" highlight DiffChange cterm=bold ctermfg=cyan ctermbg=NONE guibg=NONE
-" highlight DiffText cterm=bold ctermfg=gray ctermbg=NONE guibg=NONE
-" highlight DiffDelete cterm=bold ctermfg=red ctermbg=NONE guibg=NONE
+" Expand width of window to length of largest line (handy for NERDTree)
+nnoremap <silent> z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'len(v:val)')) + 1)<cr>
 
 "=====[ Plugins ]=============================================================
 
@@ -199,36 +193,19 @@ set grepprg=ag\ --nogroup\ --nocolor
 " Airline
 set laststatus=2   " Always show the statusline
 set noshowmode
+set ttimeoutlen=50 " Map timeout (fixes airline delay on leaving insert mode)
 let g:airline_powerline_fonts = 1
-" let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#show_buffers = 0
 
 " TagBar
 nnoremap <silent> <tab>o :TagbarToggle<CR>
 let g:tagbar_autoclose=1
-
-" Eclim
-" set rtp+=~/.vim/bundle/eclim
-" let g:EclimProjectProblemsUpdateOnSave=0 " keep saving fast
-" let g:EclimJavaDocSearchSingleResult='lopen' " Preview instead of Browser
-" let g:EclimJavaSearchSingleResult='edit'
-" let g:EclimJavaSearchMapping=0 " Don't bind <CR> to :JavaSearchContext
-" let g:EclimJavaValidate=0 " Manually validate with :Validate instead
-" " au Filetype java nnoremap <silent> <buffer> <Leader>r :JavaSearch -x reference<CR>
-" " nmap <silent> <expr> <leader>jsp FS_FoldAroundTarget('\S\+\.prototype\.\w\+',{'context':0})
-" au Filetype java nnoremap <silent> <buffer> <Leader>jc  :JavaCorrect<CR>
-" au Filetype java nnoremap <silent> <buffer> <Leader>jdc :JavaDocComment<CR>
-" au Filetype java nnoremap <silent> <buffer> <Leader>jdp :JavaDocPreview<CR>
-" au Filetype java nnoremap <silent> <buffer> <Leader>jds :JavaDocSearch<CR>
-" au Filetype java nnoremap <silent> <buffer> <Leader>jg  :JavaSearchContext<CR>
-" au Filetype java nnoremap <silent> <buffer> <Leader>jh  :JavaHierarchy<CR>
-" au Filetype java nnoremap <silent> <buffer> <Leader>ji  :JavaImport<CR>
-" au Filetype java nnoremap <silent> <buffer> <Leader>jo  :JavaImportOrganize<CR>
-" au Filetype java nnoremap          <buffer> <Leader>jrm :JavaMove
-" au Filetype java nnoremap <silent> <buffer> <Leader>jrp :RefactorUndoPeek<CR>
-" au Filetype java nnoremap          <buffer> <Leader>jrr :JavaRename
-" au Filetype java nnoremap <silent> <buffer> <Leader>jru :RefactorUndo<CR>
-" au Filetype java nnoremap <silent> <buffer> <Leader>jv  :w<CR>:Validate<CR>
 
 " Commentary
 nmap <silent> <C-\> <Plug>CommentaryLine
@@ -251,22 +228,12 @@ nmap <silent> <tab>p :pclose<CR>
 " YouCompleteMe (YCM)
 au Filetype c,cpp,objc,objcpp nnoremap <silent> <buffer> <Leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 au Filetype c,cpp,objc,objcpp nnoremap <silent> <buffer> <F5> :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_global_ycm_extra_conf = '/Users/pdonelan/g/ritz/google3/googlemac/iPhone/Drive/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_always_populate_location_list = 1
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-k>']
 let g:ycm_filetype_specific_completion_to_disable = { 'java': 1 }
-
-" Syntastic
-" nnoremap <tab>s :SyntasticToggle<CR>
-" let g:syntastic_mode_map = { 'mode': 'passive' }
-" let g:syntastic_java_checkers = ['javac', 'checkstyle']
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_enable_signs = 1
-" let g:syntastic_error_symbol = '✗'
-" let g:syntastic_warning_symbol = '⚠'
 
 "=====[ Functions ]===========================================================
 
@@ -279,6 +246,7 @@ function! BufDo(command)
 endfunction
 command! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
 
+" Line splitting.
 nnoremap <silent> K a<CR><ESC>k$
 nmap <silent> <CR> :call Enter()<CR>
 function! Enter()
@@ -297,9 +265,6 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 command! DiffSaved call s:DiffWithSaved()
-
-" Expand width of window to length of largest line (handy for NERDTree)
-nnoremap <silent> z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'len(v:val)')) + 1)<cr>
 
 silent! source ~/.vimrc-google
 silent! source ~/.vimrc-post
