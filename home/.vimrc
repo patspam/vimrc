@@ -301,5 +301,5 @@ command! DiffSaved call s:DiffWithSaved()
 " Expand width of window to length of largest line (handy for NERDTree)
 nnoremap <silent> z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'len(v:val)')) + 1)<cr>
 
-" Google
 silent! source ~/.vimrc-google
+silent! source ~/.vimrc-post
