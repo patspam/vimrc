@@ -59,6 +59,10 @@ let g:gitgutter_sign_column_always = 1
 let g:gitgutter_diff_args = 'm'
 let g:gitgutter_realtime = 0 " Only update on save
 nnoremap <tab>g :let g:gitgutter_diff_args = 'clang'
+nmap [h <Plug>GitGutterPrevHunk
+nmap ]h <Plug>GitGutterNextHunk
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterRevertHunk
 
 nmap <tab><tab> <tab>d<tab>o<c-w>h
 
@@ -170,24 +174,28 @@ let NERDTreeShowBookmarks=0
 " CtrlP
 noremap <silent> <leader>b :CtrlPBuffer<CR>
 nnoremap <silent> <leader>m :CtrlPMRUFiles<CR>
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$',
-  \ }
 let g:ctrlp_by_filename = 0 " Search by filename instead of path by default
 let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <C-F5>
-let g:ctrlp_max_files = 100000
+let g:ctrlp_max_files = 0
 let g:ctrlp_max_height = 20
 let g:ctrlp_working_path_mode = 0 " Don't muck with $PWD
-let g:ctrlp_lazy_update = 1
-" let g:ctrlp_user_command = 'vimls %s'
+let g:ctrlp_lazy_update = 350
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+    \ --ignore .git
+    \ --ignore .svn
+    \ --ignore .hg
+    \ --ignore .DS_Store
+    \ --ignore **/*.pyc
+    \ -g ""'
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " LustyJuggler
 let g:LustyJugglerDefaultMappings = 0
 nmap <silent> <leader>l :LustyJuggler<CR>
 
-" Ack
+" Ack / Ag
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+set grepprg=ag\ --nogroup\ --nocolor
 
 " Airline
 set laststatus=2   " Always show the statusline
