@@ -61,13 +61,11 @@ highlight GitGutterDelete ctermbg=233 ctermfg=1 guifg=#ff2222
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_diff_args = 'm'
 let g:gitgutter_realtime = 0 " Only update on save
-nnoremap <tab>g :let g:gitgutter_diff_args = 'clang'
+nnoremap <tab>g :let g:gitgutter_diff_args = ''<left>
 nmap [h <Plug>GitGutterPrevHunk
 nmap ]h <Plug>GitGutterNextHunk
 nmap <Leader>hs <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterRevertHunk
-
-nmap <tab><tab> <tab>d<tab>o<c-w>h
 
 " Colours
 hi VertSplit ctermfg=233 ctermbg=239 " NB. dotted grey line drawn in bg colour
@@ -160,7 +158,7 @@ nnoremap <silent> z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'l
 "=====[ Plugins ]=============================================================
 
 " NERDTree
-nnoremap <silent> <tab>d :NERDTreeToggle<CR>
+nnoremap <silent> <tab><tab> :NERDTreeToggle<CR>
 nnoremap <silent> <tab>f :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=0
 
