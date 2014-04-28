@@ -15,7 +15,10 @@ let mapleader = ";"
 "=====[ General Settings ]====================================================
 set autowrite " Automatically save before commands like :next and :make
 set background=dark
+set backupdir=~/.vim/backup/
 set colorcolumn=+1
+set completeopt-=preview
+set directory=~/.vim/backup/ " .swp files
 set hidden " Hide buffers when they are abandoned
 set hlsearch
 set ignorecase " Do case insensitive matching
@@ -32,7 +35,6 @@ set splitright
 set synmaxcol=400 " Helps prevent vim from choking on long lines
 set virtualedit=block " Square up visual selections
 set wildmenu
-set completeopt-=preview
 
 "=====[ Stuff ]===============================================================
 
