@@ -61,7 +61,7 @@ highlight GitGutterAdd ctermbg=233 ctermfg=2 guifg=#009900
 highlight GitGutterChange ctermbg=233 ctermfg=3 guifg=#bbbb00
 highlight GitGutterDelete ctermbg=233 ctermfg=1 guifg=#ff2222
 let g:gitgutter_sign_column_always = 1
-let g:gitgutter_diff_args = 'm'
+let g:gitgutter_diff_args = ''
 let g:gitgutter_realtime = 0 " Only update on save
 nnoremap <tab>g :let g:gitgutter_diff_args = ''<left>
 nmap [h <Plug>GitGutterPrevHunk
@@ -101,7 +101,8 @@ au FileType javascript,java,c,cpp,objc,objcpp setlocal textwidth=100 colorcolumn
 au FileType vim setlocal textwidth=0
 hi ColorColumn ctermbg=233
 
-au FileType python setlocal shiftwidth=2 softtabstop=2 tabstop=8
+" Python
+au FileType python setlocal shiftwidth=2 softtabstop=2 tabstop=8 textwidth=80
 
 " Auto-increment
 " Use <c-A> a
@@ -165,6 +166,8 @@ nnoremap <silent> z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'l
 nnoremap <silent> <tab><tab> :NERDTreeToggle<CR>
 nnoremap <silent> <tab>f :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=0
+let NERDTreeCaseSensitiveSort=1
+let NERDTreeIgnore=['\.pyc$', '\~$'] " Toggle filtering via default f keybinding
 
 " CtrlP
 noremap <silent> <leader>b :CtrlPBuffer<CR>
@@ -228,8 +231,8 @@ nmap <silent> <tab>l :call ToggleLocationList()<CR>
 nmap <silent> <tab>p :pclose<CR>
 
 " YouCompleteMe (YCM)
-au Filetype c,cpp,objc,objcpp nnoremap <silent> <buffer> <Leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-au Filetype c,cpp,objc,objcpp nnoremap <silent> <buffer> <F5> :YcmForceCompileAndDiagnostics<CR>
+au Filetype python,c,cpp,objc,objcpp nnoremap <silent> <buffer> <Leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+au Filetype python,c,cpp,objc,objcpp nnoremap <silent> <buffer> <F5> :YcmForceCompileAndDiagnostics<CR>
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_always_populate_location_list = 1
 let g:ycm_enable_diagnostic_signs = 0
