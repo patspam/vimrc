@@ -101,6 +101,8 @@ au FileType javascript,java,c,cpp,objc,objcpp setlocal textwidth=100 colorcolumn
 au FileType vim setlocal textwidth=0
 hi ColorColumn ctermbg=233
 
+au FileType python setlocal shiftwidth=2 softtabstop=2 tabstop=8
+
 " Auto-increment
 " Use <c-A> a
 
