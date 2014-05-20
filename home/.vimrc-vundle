@@ -30,7 +30,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 
 " vim-scripts repos
-Plugin 'a.vim'
 Plugin 'LustyJuggler'
+Plugin 'YankRing.vim'
+Plugin 'a.vim'
 Plugin 'mru.vim'
 Plugin 'patchreview.vim'

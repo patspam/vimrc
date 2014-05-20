@@ -170,8 +170,10 @@ let NERDTreeCaseSensitiveSort=1
 let NERDTreeIgnore=['\.pyc$', '\~$'] " Toggle filtering via default f keybinding
 
 " CtrlP
-noremap <silent> <leader>b :CtrlPBuffer<CR>
-nnoremap <silent> <leader>m :CtrlPMRUFiles<CR>
+" noremap <silent> <leader>b :CtrlPBuffer<CR>
+" nnoremap <silent> <leader>m :CtrlPMRUFiles<CR>
+let g:ctrlp_map = '<C-O>'
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_by_filename = 0 " Search by filename instead of path by default
 let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <C-F5>
 let g:ctrlp_max_files = 0
@@ -212,6 +214,10 @@ let g:airline#extensions#tabline#show_buffers = 0
 nnoremap <silent> <tab>o :TagbarToggle<CR>
 let g:tagbar_autoclose=1
 
+" Misc TAB toggles
+nnoremap <silent> <tab>r :registers<CR>
+nnoremap <silent> <tab>b :ls<CR>
+
 " Commentary
 nmap <silent> <C-\> <Plug>CommentaryLine
 au Filetype objc,c,cpp,objc,objcpp,html set commentstring=//%s
@@ -239,6 +245,10 @@ let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-k>']
 let g:ycm_filetype_specific_completion_to_disable = { 'java': 1 }
+
+" YankRing
+let g:yankring_history_dir = '~/.vim/'
+nnoremap <silent> <tab>y :YRShow<CR>
 
 "=====[ Functions ]===========================================================
 
