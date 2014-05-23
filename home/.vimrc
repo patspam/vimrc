@@ -44,6 +44,7 @@ augroup VimReload
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 nmap <silent> <leader>v :next $MYVIMRC<CR>
+nmap <silent> <leader>b :next ~/.bash_profile<CR>
 
 " Special Chars
 nmap <silent> <tab># :set list!<CR>
@@ -172,7 +173,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] " Toggle filtering via default f keybinding
 " CtrlP
 " noremap <silent> <leader>b :CtrlPBuffer<CR>
 " nnoremap <silent> <leader>m :CtrlPMRUFiles<CR>
-let g:ctrlp_map = '<C-O>'
+let g:ctrlp_map = '<leader>o'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_by_filename = 0 " Search by filename instead of path by default
 let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <C-F5>
@@ -249,6 +250,12 @@ let g:ycm_filetype_specific_completion_to_disable = { 'java': 1 }
 " YankRing
 let g:yankring_history_dir = '~/.vim/'
 nnoremap <silent> <tab>y :YRShow<CR>
+
+" SplitJoin
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+nmap <leader>jJ :SplitjoinJoin<cr>
+nmap <leader>jK :SplitjoinSplit<cr>
 
 "=====[ Functions ]===========================================================
 

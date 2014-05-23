@@ -28,6 +28,7 @@ Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'AndrewRadev/splitjoin.vim'
 
 " vim-scripts repos
 Plugin 'LustyJuggler'
