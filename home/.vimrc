@@ -43,8 +43,15 @@ augroup VimReload
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
-nmap <silent> <leader>v :next $MYVIMRC<CR>
-nmap <silent> <leader>b :next ~/.bash_profile<CR>
+nmap <silent> <leader>evc :next $MYVIMRC<CR>
+nmap <silent> <leader>evv :next ~/.vimrc-vundle<CR>
+nmap <silent> <leader>evpr :next ~/.vimrc-pre<CR>
+nmap <silent> <leader>evpo :next ~/.vimrc-post<CR>
+nmap <silent> <leader>evg :next ~/.vimrc-google<CR>
+nmap <silent> <leader>ebp :next ~/.bash_profile<CR>
+nmap <silent> <leader>ebg :next ~/.bashrc-google<CR>
+nmap <silent> <leader>eaa :next ~/.aliases<CR>
+nmap <silent> <leader>eag :next ~/.aliases-google<CR>
 
 " Special Chars
 nmap <silent> <tab># :set list!<CR>
@@ -55,6 +62,8 @@ highlight SpecialKey ctermbg=0 ctermfg=DarkRed guibg=black guifg=DarkRed
 
 " Typos
 command! -bang Q q<bang>
+
+nnoremap <leader>h :vert help 
 
 " Gutters (navigate hunks with ]h, [h)
 highlight SignColumn ctermbg=233
@@ -171,16 +180,14 @@ let NERDTreeCaseSensitiveSort=1
 let NERDTreeIgnore=['\.pyc$', '\~$'] " Toggle filtering via default f keybinding
 
 " CtrlP
-" noremap <silent> <leader>b :CtrlPBuffer<CR>
-" nnoremap <silent> <leader>m :CtrlPMRUFiles<CR>
 let g:ctrlp_map = '<leader>o'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_by_filename = 0 " Search by filename instead of path by default
-let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <C-F5>
+let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <F5>
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_height = 20
 let g:ctrlp_working_path_mode = 0 " Don't muck with $PWD
-let g:ctrlp_lazy_update = 350
+let g:ctrlp_lazy_update = 10
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
     \ --ignore .git
     \ --ignore .svn
@@ -190,13 +197,16 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
     \ -g ""'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
+" Ag
+let g:agprg='ag --column'
+
 " LustyJuggler
 let g:LustyJugglerDefaultMappings = 0
 nmap <silent> <leader>l :LustyJuggler<CR>
 
 " Ack / Ag
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-set grepprg=ag\ --nogroup\ --nocolor
+" let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+" set grepprg=ag\ --nogroup\ --nocolor
 
 " Airline
 set laststatus=2   " Always show the statusline
