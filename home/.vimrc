@@ -35,6 +35,7 @@ set splitright
 set synmaxcol=400 " Helps prevent vim from choking on long lines
 set virtualedit=block " Square up visual selections
 set wildmenu
+set formatoptions+=j " Remove comment leader when joining lines
 
 "=====[ Stuff ]===============================================================
 
@@ -79,6 +80,9 @@ nmap ]h <Plug>GitGutterNextHunk
 nmap <Leader>hs <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterRevertHunk
 
+" Git
+nmap <Leader>g :!git 
+
 " Colours
 hi VertSplit ctermfg=233 ctermbg=239 " NB. dotted grey line drawn in bg colour
 
@@ -119,6 +123,8 @@ au FileType python setlocal shiftwidth=2 softtabstop=2 tabstop=8 textwidth=80
 
 " Objective-C
 au FileType objc,objcpp nnoremap <buffer> <leader>jl :cexpr system(g:objclinter . " " . expand("%"))<cr>
+au FileType objcpp setf objc
+au BufRead,BufNewFile *.mm set filetype=objc
 
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
 " au FileType javascript setlocal formatoptions+=t
@@ -170,6 +176,8 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 " Expand width of window to length of largest line (handy for NERDTree)
 nnoremap <silent> z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'len(v:val)')) + 1)<cr>
 
+nnoremap <leader>v :vsplit<cr>
+
 "=====[ Plugins ]=============================================================
 
 " NERDTree
@@ -181,13 +189,15 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] " Toggle filtering via default f keybinding
 
 " CtrlP
 let g:ctrlp_map = '<leader>o'
+nnoremap <leader>m :CtrlPMRUFiles<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_by_filename = 0 " Search by filename instead of path by default
 let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <F5>
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_height = 20
 let g:ctrlp_working_path_mode = 0 " Don't muck with $PWD
-let g:ctrlp_lazy_update = 10
+let g:ctrlp_lazy_update = 50
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
     \ --ignore .git
     \ --ignore .svn
@@ -231,7 +241,7 @@ nnoremap <silent> <tab>b :ls<CR>
 
 " Commentary
 nmap <silent> <C-\> <Plug>CommentaryLine
-au Filetype objc,c,cpp,objc,objcpp,html set commentstring=//%s
+au Filetype c,cpp,objc,objcpp,html set commentstring=//%s
 
 " Matchit (bundled with vim)
 :runtime macros/matchit.vim
