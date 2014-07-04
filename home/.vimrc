@@ -267,6 +267,9 @@ let g:splitjoin_join_mapping = ''
 nmap <leader>jJ :SplitjoinJoin<cr>
 nmap <leader>jK :SplitjoinSplit<cr>
 
+" Gundo
+nnoremap <tab>u :GundoToggle<CR>
+
 "=====[ Functions ]===========================================================
 
 " Like bufdo but restore the current buffer.
