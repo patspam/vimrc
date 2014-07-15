@@ -209,6 +209,7 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Ag
 let g:agprg='ag --column'
+nmap <leader>f :Ag  <C-R>=expand("%:h")<CR><C-B><Right><Right><Right>
 
 " LustyJuggler
 let g:LustyJugglerDefaultMappings = 0
