@@ -44,15 +44,7 @@ augroup VimReload
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
-nmap <silent> <leader>evc :next $MYVIMRC<CR>
-nmap <silent> <leader>evv :next ~/.vimrc-vundle<CR>
-nmap <silent> <leader>evpr :next ~/.vimrc-pre<CR>
-nmap <silent> <leader>evpo :next ~/.vimrc-post<CR>
-nmap <silent> <leader>evg :next ~/.vimrc-google<CR>
-nmap <silent> <leader>ebp :next ~/.bash_profile<CR>
-nmap <silent> <leader>ebg :next ~/.bashrc-google<CR>
-nmap <silent> <leader>eaa :next ~/.aliases<CR>
-nmap <silent> <leader>eag :next ~/.aliases-google<CR>
+nmap <silent> <leader>ev :next $MYVIMRC<CR>
 
 " Special Chars
 nmap <silent> <tab># :set list!<CR>
@@ -185,7 +177,7 @@ nnoremap <silent> <tab><tab> :NERDTreeToggle<CR>
 nnoremap <silent> <tab>f :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=0
 let NERDTreeCaseSensitiveSort=1
-let NERDTreeIgnore=['\.pyc$', '\~$'] " Toggle filtering via default f keybinding
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.gypd$'] " Toggle filtering via default f keybinding
 
 " CtrlP
 let g:ctrlp_map = '<leader>o'
