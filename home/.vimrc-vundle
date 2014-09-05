@@ -4,7 +4,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Plugin 'gmarik/vundle'
 
-" GitHub
+" Plugins.
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'airblade/vim-gitgutter'
@@ -33,10 +33,8 @@ Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-
-" vim-scripts repos
-Plugin 'LustyJuggler'
-Plugin 'YankRing.vim'
-Plugin 'a.vim'
-Plugin 'mru.vim'
-Plugin 'patchreview.vim'
+Plugin 'vim-scripts/LustyJuggler'
+Plugin 'vim-scripts/YankRing.vim'
+Plugin 'vim-scripts/a.vim'
+Plugin 'vim-scripts/mru.vim'
+Plugin 'vim-scripts/patchreview.vim'
