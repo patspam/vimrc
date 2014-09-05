@@ -9,6 +9,7 @@ silent! source ~/.vimrc-vundle
 syntax on
 silent! source ~/.vimrc-g-shared-pre
 silent! source ~/.vimrc-g-osx-pre
+silent! source ~/.vimrc-g-goobuntu-pre
 filetype plugin indent on
 nnoremap <silent> <space> ;
 let mapleader = ";"
@@ -178,7 +179,7 @@ nnoremap <silent> <tab><tab> :NERDTreeToggle<CR>
 nnoremap <silent> <tab>f :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=0
 let NERDTreeCaseSensitiveSort=1
-let NERDTreeIgnore=['\.pyc$', '\~$', '\.git', '\.gypd$'] " Toggle filtering via default f keybinding
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.git$', '\.gypd$'] " Toggle filtering via default f keybinding
 
 " CtrlP
 let g:ctrlp_map = '<leader>o'
@@ -310,3 +311,4 @@ command! DiffSaved call s:DiffWithSaved()
 
 silent! source ~/.vimrc-g-shared-post
 silent! source ~/.vimrc-g-osx-post
+silent! source ~/.vimrc-g-goobuntu-post
