@@ -186,7 +186,6 @@ let g:ctrlp_map = '<leader>o'
 nnoremap <leader>m :CtrlPMRUFiles<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_by_filename = 1 " (toggle dir search with <c-d>)
 let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <F5>
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_height = 20
