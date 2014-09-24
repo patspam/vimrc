@@ -17,10 +17,8 @@ let mapleader = ";"
 "=====[ General Settings ]====================================================
 set autowrite " Automatically save before commands like :next and :make
 set background=dark
-set backupdir=~/.vim/backup/
 set colorcolumn=+1
 set completeopt-=preview
-set directory=~/.vim/backup/ " .swp files
 set hidden " Hide buffers when they are abandoned
 set hlsearch
 set ignorecase " Do case insensitive matching
@@ -38,6 +36,13 @@ set synmaxcol=400 " Helps prevent vim from choking on long lines
 set virtualedit=block " Square up visual selections
 set wildmenu
 set formatoptions+=j " Remove comment leader when joining lines
+
+" Swap & Undo
+silent !mkdir ~/.vim/{swap,undo} > /dev/null 2>&1
+set directory=~/.vim/swap// " Double-slash ensures %filepath%separation%
+set undodir=~/.vim/undo
+set undolevels=5000
+set undofile
 
 "=====[ Stuff ]===============================================================
 
@@ -84,13 +89,6 @@ hi VertSplit ctermfg=233 ctermbg=239 " NB. dotted grey line drawn in bg colour
 au BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
               \|    exe "normal! g`\""
               \|  endif
-
-" Persistent undo
-if has('persistent_undo')
-  set undodir=$HOME/.vim/undo
-  set undolevels=5000
-  set undofile
-endif
 
 " Tabs
 set expandtab
