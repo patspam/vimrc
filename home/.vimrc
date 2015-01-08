@@ -234,6 +234,7 @@ nnoremap <silent> <tab>b :ls<CR>
 " Commentary
 nmap <silent> <C-\> <Plug>CommentaryLine
 au Filetype c,cpp,objc,objcpp,html set commentstring=//%s
+au Filetype blazebuild set commentstring=#%s
 
 " Matchit (bundled with vim)
 :runtime macros/matchit.vim
@@ -305,6 +306,25 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 command! DiffSaved call s:DiffWithSaved()
+
+function! HighlightRepeats() range
+  let lineCounts = {}
+  let lineNum = a:firstline
+  while lineNum <= a:lastline
+    let lineText = getline(lineNum)
+    if lineText != ""
+      let lineCounts[lineText] = (has_key(lineCounts, lineText) ? lineCounts[lineText] : 0) + 1
+    endif
+    let lineNum = lineNum + 1
+  endwhile
+  exe 'syn clear Repeat'
+  for lineText in keys(lineCounts)
+    if lineCounts[lineText] >= 2
+      exe 'syn match Repeat "^' . escape(lineText, '".\^$*[]') . '$"'
+    endif
+  endfor
+endfunction
+command! -range=% Duplicates <line1>,<line2>call HighlightRepeats()
 
 silent! source ~/.vimrc-g-shared-post
 silent! source ~/.vimrc-g-osx-post
