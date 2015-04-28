@@ -251,7 +251,7 @@ nmap <silent> <tab>l :call ToggleLocationList()<CR>
 nmap <silent> <tab>p :pclose<CR>
 
 " YouCompleteMe (YCM)
-au Filetype python,c,cpp,objc,objcpp nnoremap <silent> <buffer> <Leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+au Filetype python,c,cpp,objc,objcpp nnoremap <silent> <buffer> <Leader>jd :YcmCompleter GoTo<CR>
 au Filetype python,c,cpp,objc,objcpp nnoremap <silent> <buffer> <F5> :YcmForceCompileAndDiagnostics<CR>
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_always_populate_location_list = 1
