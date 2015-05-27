@@ -182,7 +182,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$', '\.git$', '\.gypd$'] " Toggle filtering via
 " CtrlP
 let g:ctrlp_map = '<leader>o'
 nnoremap <leader>m :CtrlPMRUFiles<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <F5>
 let g:ctrlp_max_files = 0
@@ -224,8 +223,8 @@ let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
 
 " TagBar
-nnoremap <silent> <tab>o :TagbarToggle<CR>
-let g:tagbar_autoclose=1
+" nnoremap <silent> <tab>o :TagbarToggle<CR>
+" let g:tagbar_autoclose=1
 
 " Misc TAB toggles
 nnoremap <silent> <tab>r :registers<CR>
