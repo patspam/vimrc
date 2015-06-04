@@ -146,7 +146,7 @@ nmap <leader>s :%s/\<<C-r><C-w>\>/
 vmap s :s/
 
 " Sorting
-vmap so !sort<CR>
+vmap gs !sort<CR>
 
 " Saving files
 nmap <silent> <leader>w :w<CR>
