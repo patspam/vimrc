@@ -62,6 +62,7 @@ highlight SpecialKey ctermbg=0 ctermfg=DarkRed guibg=black guifg=DarkRed
 
 " Typos
 command! -bang Q q<bang>
+command! -bang -nargs=? -complete=file E e<bang> <args>
 
 nnoremap <leader>h :vert help 
 
