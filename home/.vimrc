@@ -147,7 +147,11 @@ nmap <leader>s :%s/\<<C-r><C-w>\>/
 vmap s :s/
 
 " Sorting
-vmap gs !sort<CR>
+vmap gs :sort<CR>
+map sb vip:sort<CR>
+map s) vi):sort<CR>
+map s] vi]:sort<CR>
+map s} vi}:sort<CR>
 
 " Saving files
 nmap <silent> <leader>w :w<CR>
@@ -258,7 +262,7 @@ let g:ycm_always_populate_location_list = 1
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-k>']
-let g:ycm_filetype_specific_completion_to_disable = { 'java': 1 }
+let g:ycm_filetype_specific_completion_to_disable = { 'java': 1, 'objc': 1, 'cpp': 1 }
 
 " YankRing
 let g:yankring_history_dir = '~/.vim/'
