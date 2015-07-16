@@ -153,6 +153,9 @@ map s) vi):sort<CR>
 map s] vi]:sort<CR>
 map s} vi}:sort<CR>
 
+" Reflow
+map qb vipgq
+
 " Saving files
 nmap <silent> <leader>w :w<CR>
 nmap <silent> <leader>x :BD<CR>
@@ -238,7 +241,6 @@ nnoremap <silent> <tab>b :ls<CR>
 " Commentary
 nmap <silent> <C-\> <Plug>CommentaryLine
 au Filetype c,cpp,objc,objcpp,html set commentstring=//%s
-au Filetype blazebuild set commentstring=#%s
 
 " Matchit (bundled with vim)
 :runtime macros/matchit.vim
