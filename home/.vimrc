@@ -106,6 +106,7 @@ vmap <silent> <C-R> <ESC><C-R>gv
 " Line width
 au FileType javascript,java,c,cpp,objc,objcpp setlocal textwidth=100 colorcolumn=+1
 au FileType vim setlocal textwidth=0
+au FileType markdown setlocal textwidth=80
 hi ColorColumn ctermbg=233
 
 " Python
