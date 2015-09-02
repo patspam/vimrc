@@ -91,6 +91,15 @@ au BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
               \|    exe "normal! g`\""
               \|  endif
 
+" Fix Shift+Arrow keys when TERM=screen-256color
+if &term =~ '^screen'
+  " tmux will send xterm-style keys when its xterm-keys option is on
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
+endif
+
 " Tabs
 set expandtab
 set shiftwidth=2 " Autoindent width
@@ -117,14 +126,17 @@ au FileType python setlocal shiftwidth=2 softtabstop=2 tabstop=8 textwidth=80
 
 " Objective-C
 au FileType objc,objcpp nnoremap <buffer> <leader>jl :cexpr system(g:objclinter . " " . expand("%"))<cr>
-au FileType objcpp setf objc
-au BufRead,BufNewFile *.mm set filetype=objc
+au FileType objcpp set ft=objc
+au BufRead,BufNewFile *.mm set ft=objc
 
 " Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
 " au FileType javascript setlocal formatoptions+=t
 
 " Markdown
 au BufNewFile,BufRead *.md set ft=markdown
+
+" Dosini
+au FileType conf set ft=dosini
 
 " File changes
 set autoread
@@ -139,9 +151,6 @@ nnoremap <silent> <C-w><C-^> :vsplit #<CR>
 nnoremap <silent> <Backspace> :nohlsearch<CR>
 nnoremap <silent> <Leader>] :execute "silent! !ctags -R" <Bar> redraw!<CR>
 nnoremap <silent> <leader>q :cw<CR>
-
-" Paste (best to use 'yp' or 'yP' to enter temporary insert paste mode)
-set pastetoggle=<F2>
 
 " Search/Replace
 nmap <leader>s :%s/\<<C-r><C-w>\>/
@@ -191,12 +200,13 @@ let NERDTreeIgnore=['\.pyc$', '\~$', '\.git$', '\.gypd$'] " Toggle filtering via
 " CtrlP
 let g:ctrlp_map = '<leader>o'
 nnoremap <leader>m :CtrlPMRUFiles<CR>
-let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_clear_cache_on_exit = 0 " Only refresh on explicit <F5>
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_lazy_update = 50
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_height = 20
+let g:ctrlp_mruf_relative = 1
 let g:ctrlp_working_path_mode = 0 " Don't muck with $PWD
-let g:ctrlp_lazy_update = 50
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
     \ --ignore .git
     \ --ignore .svn
@@ -242,6 +252,7 @@ nnoremap <silent> <tab>b :ls<CR>
 " Commentary
 nmap <silent> <C-\> <Plug>CommentaryLine
 au Filetype c,cpp,objc,objcpp,html set commentstring=//%s
+au Filetype expect set commentstring=#\ %s
 
 " Matchit (bundled with vim)
 :runtime macros/matchit.vim
