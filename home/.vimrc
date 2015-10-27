@@ -66,19 +66,19 @@ command! -bang -nargs=? -complete=file E e<bang> <args>
 
 nnoremap <leader>h :vert help 
 
+" Visual mode highlight
+highlight CursorLine term=bold cterm=bold guibg=Grey40
+
 " Gutters (navigate hunks with ]h, [h)
 highlight SignColumn ctermbg=233
-highlight GitGutterAdd ctermbg=233 ctermfg=2 guifg=#009900
-highlight GitGutterChange ctermbg=233 ctermfg=3 guifg=#bbbb00
-highlight GitGutterDelete ctermbg=233 ctermfg=1 guifg=#ff2222
-let g:gitgutter_sign_column_always = 1
-let g:gitgutter_diff_args = ''
-let g:gitgutter_realtime = 0 " Only update on save
-nnoremap <tab>g :let g:gitgutter_diff_args = ''<left>
-nmap [h <Plug>GitGutterPrevHunk
-nmap ]h <Plug>GitGutterNextHunk
-nmap <Leader>hs <Plug>GitGutterStageHunk
-nmap <Leader>hr <Plug>GitGutterRevertHunk
+" Always show gutters
+au BufEnter * sign define dummy
+au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+
+" Diff colours (also used by sign column plugins)
+highlight DiffAdd ctermbg=233 ctermfg=2 guifg=#009900
+highlight DiffChange ctermbg=233 ctermfg=3 guifg=#bbbb00
+highlight DiffDelete ctermbg=233 ctermfg=1 guifg=#ff2222
 
 " Git
 nmap <Leader>g :!git 
@@ -129,9 +129,6 @@ au FileType objc,objcpp nnoremap <buffer> <leader>jl :cexpr system(g:objclinter 
 au FileType objcpp set ft=objc
 au BufRead,BufNewFile *.mm set ft=objc
 
-" Vim's ftplugin/javascript.vim unsets the t flag (/usr/share/vim/vim73/ftplugin/javascript.vim)
-" au FileType javascript setlocal formatoptions+=t
-
 " Markdown
 au BufNewFile,BufRead *.md set ft=markdown
 
@@ -148,7 +145,7 @@ au BufEnter *.html :syntax sync fromstart
 nnoremap <silent> <tab>c :execute "set colorcolumn=" . (&cc == "+1" ? "0" : "+1")<CR>
 nnoremap <silent> <leader>u :Bufdo checktime<CR>
 nnoremap <silent> <C-w><C-^> :vsplit #<CR>
-nnoremap <silent> <Backspace> :nohlsearch<CR>
+nnoremap <silent> <Backspace> :nohlsearch<CR>:echo<CR>
 nnoremap <silent> <Leader>] :execute "silent! !ctags -R" <Bar> redraw!<CR>
 nnoremap <silent> <leader>q :cw<CR>
 
@@ -287,9 +284,6 @@ let g:splitjoin_split_mapping = ''
 let g:splitjoin_join_mapping = ''
 nmap <leader>jJ :SplitjoinJoin<cr>
 nmap <leader>jK :SplitjoinSplit<cr>
-
-" Gundo
-nnoremap <tab>u :GundoToggle<CR>
 
 " Dash
 nmap <silent> <leader>d <Plug>DashSearch
