@@ -214,7 +214,7 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Ag
-let g:agprg='ag --column'
+let g:ag_prg='ag --column'
 nmap <leader>f :Ag  <C-R>=expand("%:h")<CR><C-B><Right><Right><Right>
 
 " LustyJuggler
