@@ -142,7 +142,7 @@ au BufRead,BufNewFile *.mm set ft=objc
 au BufNewFile,BufRead *.md set ft=markdown
 
 " Dosini
-au FileType conf set ft=dosini
+" au FileType conf set ft=dosini
 
 " File changes
 set autoread
