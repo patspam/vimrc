@@ -36,6 +36,7 @@ set synmaxcol=400 " Helps prevent vim from choking on long lines
 set virtualedit=block " Square up visual selections
 set wildmenu
 set formatoptions+=j " Remove comment leader when joining lines
+set nostartofline " Don't move cursor to start of line when switching buffers
 
 " Swap & Undo
 silent !mkdir ~/.vim/{swap,undo} > /dev/null 2>&1
@@ -235,9 +236,9 @@ nmap <silent> <leader>l :LustyJuggler<CR>
 " set grepprg=ag\ --nogroup\ --nocolor
 
 " Airline
-set laststatus=2   " Always show the statusline
+set laststatus=2  " Always show the statusline
 set noshowmode
-set ttimeoutlen=50 " Map timeout (fixes airline delay on leaving insert mode)
+set ttimeoutlen=50  " Map timeout (fixes airline delay on leaving insert mode)
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
