@@ -298,6 +298,11 @@ nmap <leader>jK :SplitjoinSplit<cr>
 " Dash
 nmap <silent> <leader>d <Plug>DashSearch
 
+" Startify
+let g:startify_change_to_dir = 0
+let g:startify_enable_unsafe = 1
+let g:startify_list_order = ['files', 'dir']
+
 "=====[ Functions ]===========================================================
 
 " Like bufdo but restore the current buffer.
