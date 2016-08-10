@@ -96,6 +96,10 @@ nmap <Leader>g :!git
 " Colours
 hi VertSplit ctermfg=233 ctermbg=239 " NB. dotted grey line drawn in bg colour
 
+" CursorLine
+nnoremap <Leader>c :set cursorline!<CR>
+hi CursorLine cterm=underline
+
 " Jump to most recent position in file
 au BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
               \|    exe "normal! g`\""
