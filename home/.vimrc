@@ -307,6 +307,10 @@ let g:startify_change_to_dir = 0
 let g:startify_enable_unsafe = 1
 let g:startify_list_order = ['files', 'dir']
 
+" JavaScript
+let g:javascript_plugin_flow = 1  " syntax highlighting for Flow.
+let g:jsx_ext_required = 0  " enable for .js files.
+
 "=====[ Functions ]===========================================================
 
 " Like bufdo but restore the current buffer.
