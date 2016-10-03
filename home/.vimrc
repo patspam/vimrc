@@ -224,6 +224,7 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
     \ --ignore .hg
     \ --ignore .DS_Store
     \ --ignore **/*.pyc
+    \ --skip-vcs-ignores
     \ -g ""'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
@@ -280,8 +281,12 @@ nmap <silent> <tab>l :call ToggleLocationList()<CR>
 nmap <silent> <tab>p :pclose<CR>
 
 " YouCompleteMe (YCM)
-au Filetype python,c,cpp,objc,objcpp nnoremap <silent> <buffer> <Leader>jd :YcmCompleter GoTo<CR>
-au Filetype python,c,cpp,objc,objcpp nnoremap <silent> <buffer> <F5> :YcmForceCompileAndDiagnostics<CR>
+" cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer --tern-completer
+au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <c-]> :YcmCompleter GoTo<CR>
+au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <Leader>jr :YcmCompleter GoToReferences<CR>
+au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <Leader>jt :YcmCompleter GetType<CR>
+au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <Leader>j? :YcmCompleter GetDoc<CR>
+au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <F5> :YcmForceCompileAndDiagnostics<CR>
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_always_populate_location_list = 1
 let g:ycm_enable_diagnostic_signs = 0
@@ -307,9 +312,30 @@ let g:startify_change_to_dir = 0
 let g:startify_enable_unsafe = 1
 let g:startify_list_order = ['files', 'dir']
 
-" JavaScript
+" pangloss/vim-javascript (syntax highlighting, indentation).
 let g:javascript_plugin_flow = 1  " syntax highlighting for Flow.
 let g:jsx_ext_required = 0  " enable for .js files.
+" au Filetype javascript nnoremap <silent> <buffer> <leader>jd :FlowJumpToDef<CR>
+" au Filetype javascript nnoremap <silent> <buffer> <leader>jt :FlowType<CR>
+
+" Syntastic
+let g:syntastic_mode_map = { "mode": "passive" }  " (:SyntasticToggle to go active)
+au Filetype javascript nnoremap <silent> <buffer> <leader>jc :SyntasticCheck<CR>
+au Filetype javascript nnoremap <silent> <buffer> <leader>j<backspace> :SyntasticReset<CR>
+let g:syntastic_always_populate_loc_list = 0  " Use :Errors to populate/show.
+let g:syntastic_auto_jump = 1
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+highlight SyntasticError ctermbg=237
+highlight SyntasticWarning ctermbg=237
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+
+" Syntastic JavaScript (YCM only does completion for JS)
+let g:syntastic_javascript_checkers = ["eslint"]
+let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
 
 "=====[ Functions ]===========================================================
 
