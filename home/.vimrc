@@ -6,11 +6,11 @@
 "=====[ Pre Config ]==========================================================
 set nocompatible
 silent! source ~/.vimrc-vundle
-syntax on
 silent! source ~/.vimrc-g-shared-pre
 silent! source ~/.vimrc-g-osx-pre
 silent! source ~/.vimrc-g-goobuntu-pre
 filetype plugin indent on
+syntax on
 nnoremap <silent> <space> ;
 let mapleader = ";"
 
@@ -97,7 +97,7 @@ nmap <Leader>g :!git
 hi VertSplit ctermfg=233 ctermbg=239 " NB. dotted grey line drawn in bg colour
 
 " CursorLine
-nnoremap <Leader>c :set cursorline!<CR>
+" nnoremap <Leader>c :set cursorline!<CR>
 hi CursorLine cterm=underline
 
 " Jump to most recent position in file
@@ -164,8 +164,8 @@ nnoremap <silent> <Leader>] :execute "silent! !ctags -R" <Bar> redraw!<CR>
 nnoremap <silent> <leader>q :cw<CR>
 
 " Search/Replace
-nmap <leader>s :%s/\<<C-r><C-w>\>/
-vmap s :s/
+nmap <leader>~ :%s/\<<C-r><C-w>\>/
+vmap ~ :s/
 
 " Sorting
 vmap gs :sort<CR>
@@ -319,9 +319,14 @@ let g:jsx_ext_required = 0  " enable for .js files.
 " au Filetype javascript nnoremap <silent> <buffer> <leader>jt :FlowType<CR>
 
 " Syntastic
-let g:syntastic_mode_map = { "mode": "passive" }  " (:SyntasticToggle to go active)
-au Filetype javascript nnoremap <silent> <buffer> <leader>jc :SyntasticCheck<CR>
-au Filetype javascript nnoremap <silent> <buffer> <leader>j<backspace> :SyntasticReset<CR>
+let g:syntastic_mode_map = {
+  \ "mode": "passive",
+  \ "active_filetypes": ["bzl"] }
+nnoremap <silent> <leader>sc :SyntasticCheck<CR>
+nnoremap <silent> <leader>ss :SyntasticCheck<CR>
+nnoremap <silent> <leader>si :SyntasticInfo<CR>
+nnoremap <silent> <leader>st :SyntasticToggle<CR>
+nnoremap <silent> <leader>s<backspace> :SyntasticReset<CR>
 let g:syntastic_always_populate_loc_list = 0  " Use :Errors to populate/show.
 let g:syntastic_auto_jump = 1
 let g:syntastic_error_symbol = '❌'
