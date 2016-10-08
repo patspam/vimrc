@@ -2,19 +2,27 @@
 " Vim Config
 " Patrick Donelan
 "
-
 "=====[ Pre Config ]==========================================================
+" Vundle stanza (part 1)
 set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
 silent! source ~/.vimrc-vundle
+silent! source ~/.vimrc-osx-pre
 silent! source ~/.vimrc-g-shared-pre
 silent! source ~/.vimrc-g-osx-pre
 silent! source ~/.vimrc-g-goobuntu-pre
+
+" Vundle stanza (part 2)
+call vundle#end()
 filetype plugin indent on
+
+"=====[ General Settings ]====================================================
 syntax on
 nnoremap <silent> <space> ;
 let mapleader = ";"
-
-"=====[ General Settings ]====================================================
 set autowrite " Automatically save before commands like :next and :make
 set background=dark
 set colorcolumn=+1
@@ -281,7 +289,6 @@ nmap <silent> <tab>l :call ToggleLocationList()<CR>
 nmap <silent> <tab>p :pclose<CR>
 
 " YouCompleteMe (YCM)
-" cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer --tern-completer
 au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <c-]> :YcmCompleter GoTo<CR>
 au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <Leader>jr :YcmCompleter GoToReferences<CR>
 au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <Leader>jt :YcmCompleter GetType<CR>
@@ -392,6 +399,7 @@ function! HighlightRepeats() range
 endfunction
 command! -range=% Duplicates <line1>,<line2>call HighlightRepeats()
 
+silent! source ~/.vimrc-osx-post
 silent! source ~/.vimrc-g-shared-post
 silent! source ~/.vimrc-g-osx-post
 silent! source ~/.vimrc-g-goobuntu-post

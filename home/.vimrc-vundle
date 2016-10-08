@@ -1,18 +1,12 @@
-" Required stanza
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-Plugin 'gmarik/Vundle.vim'
-
 " Plugins.
+" Plugin 'flowtype/vim-flow.git'
+" Plugin 'mxw/vim-jsx'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'b4winckler/vim-objc'
 Plugin 'bling/vim-airline'
-" Plugin 'flowtype/vim-flow.git'
-" Plugin 'mxw/vim-jsx'
-Plugin 'pangloss/vim-javascript'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'google/vim-searchindex'
 Plugin 'jnwhiteh/vim-golang'
@@ -25,6 +19,7 @@ Plugin 'msanders/snipmate.vim'
 Plugin 'nacitar/a.vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'niklasb/bufkill.vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'qstrahl/vim-matchmaker'
 Plugin 'rizzatti/dash.vim'
 Plugin 'rking/ag.vim'
