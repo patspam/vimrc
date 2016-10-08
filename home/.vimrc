@@ -19,10 +19,9 @@ silent! source ~/.vimrc-g-goobuntu-pre
 call vundle#end()
 filetype plugin indent on
 
-"=====[ General Settings ]====================================================
 syntax on
-nnoremap <silent> <space> ;
-let mapleader = ";"
+
+"=====[ General Settings ]====================================================
 set autowrite " Automatically save before commands like :next and :make
 set background=dark
 set colorcolumn=+1
@@ -45,6 +44,10 @@ set virtualedit=block " Square up visual selections
 set wildmenu
 set formatoptions+=j " Remove comment leader when joining lines
 set nostartofline " Don't move cursor to start of line when switching buffers
+
+" Leader
+let mapleader = ";"
+nnoremap <silent> <space> ;
 
 " Swap & Undo
 silent !mkdir ~/.vim/{swap,undo} > /dev/null 2>&1
