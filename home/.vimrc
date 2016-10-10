@@ -25,7 +25,7 @@ syntax on
 set autowrite " Automatically save before commands like :next and :make
 set background=dark
 set colorcolumn=+1
-set completeopt-=preview
+" set completeopt-=preview
 set hidden " Hide buffers when they are abandoned
 set hlsearch
 set ignorecase " Do case insensitive matching
@@ -256,6 +256,7 @@ nmap <silent> <leader>l :LustyJuggler<CR>
 set laststatus=2  " Always show the statusline
 set noshowmode
 set ttimeoutlen=50  " Map timeout (fixes airline delay on leaving insert mode)
+let g:airline_inactive_collapse = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -264,6 +265,9 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
+let g:airline#extensions#quickfix#location_text = 'Location'
 
 " TagBar
 " nnoremap <silent> <tab>o :TagbarToggle<CR>
@@ -297,23 +301,19 @@ au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <c-]>
 au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <Leader>jr :YcmCompleter GoToReferences<CR>
 au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <Leader>jt :YcmCompleter GetType<CR>
 au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <Leader>j? :YcmCompleter GetDoc<CR>
+au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <buffer> <Leader>j~ :YcmCompleter RefactorRename <C-r><C-w>
 au Filetype python,c,cpp,objc,objcpp,javascript nnoremap <silent> <buffer> <F5> :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_confirm_extra_conf = 0
 let g:ycm_always_populate_location_list = 1
 let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>', '<C-k>']
 let g:ycm_filetype_specific_completion_to_disable = { 'java': 1, 'objc': 1, 'cpp': 1 }
 
-" YankRing
-let g:yankring_history_dir = '~/.vim/'
-nnoremap <silent> <tab>y :YRShow<CR>
-
 " SplitJoin
-let g:splitjoin_split_mapping = ''
-let g:splitjoin_join_mapping = ''
-nmap <leader>jJ :SplitjoinJoin<cr>
-nmap <leader>jK :SplitjoinSplit<cr>
+let g:splitjoin_trailing_comma = 1
 
 " Dash
 nmap <silent> <leader>d <Plug>DashSearch
@@ -331,7 +331,6 @@ let g:jsx_ext_required = 0  " enable for .js files.
 
 " Plugin 'elzr/vim-json'  " JSON highlight/indentation.
 let g:vim_json_syntax_conceal = 0
-let g:vim_json_warnings = 0
 
 " au Filetype javascript nnoremap <silent> <buffer> <leader>jd :FlowJumpToDef<CR>
 " au Filetype javascript nnoremap <silent> <buffer> <leader>jt :FlowType<CR>
