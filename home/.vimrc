@@ -38,6 +38,7 @@ set nocursorline " Causes a visible flicker, especially in visual mode
 set showcmd " Show (partial) command in status line
 set showmatch " Show matching brackets
 set smartcase " Do smart case matching
+set splitbelow
 set splitright
 set synmaxcol=400 " Helps prevent vim from choking on long lines
 set virtualedit=block " Square up visual selections
@@ -322,35 +323,34 @@ let g:startify_change_to_dir = 0
 let g:startify_enable_unsafe = 1
 let g:startify_list_order = ['files', 'dir']
 
-" pangloss/vim-javascript (syntax highlighting, indentation).
-let g:javascript_plugin_flow = 1  " syntax highlighting for Flow.
+" Plugin 'pangloss/vim-javascript'  " JS highlighting/indentation.
+let g:javascript_plugin_flow = 1  " Flow highlighting.
+
+" Plugin 'mxw/vim-jsx'  " JSX highlighting/indentation.
 let g:jsx_ext_required = 0  " enable for .js files.
+
+" Plugin 'elzr/vim-json'  " JSON highlight/indentation.
+let g:vim_json_syntax_conceal = 0
+let g:vim_json_warnings = 0
+
 " au Filetype javascript nnoremap <silent> <buffer> <leader>jd :FlowJumpToDef<CR>
 " au Filetype javascript nnoremap <silent> <buffer> <leader>jt :FlowType<CR>
 
-" Syntastic
-let g:syntastic_mode_map = {
-  \ "mode": "passive",
-  \ "active_filetypes": ["bzl"] }
-nnoremap <silent> <leader>sc :SyntasticCheck<CR>
-nnoremap <silent> <leader>ss :SyntasticCheck<CR>
-nnoremap <silent> <leader>si :SyntasticInfo<CR>
-nnoremap <silent> <leader>st :SyntasticToggle<CR>
-nnoremap <silent> <leader>s<backspace> :SyntasticReset<CR>
-let g:syntastic_always_populate_loc_list = 0  " Use :Errors to populate/show.
-let g:syntastic_auto_jump = 1
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-highlight SyntasticError ctermbg=237
-highlight SyntasticWarning ctermbg=237
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
+" Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_jsx_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_exe = './node_modules/.bin/eslint'
+" let g:neomake_logfile = '/tmp/neomake.log'
+augroup Neomake
+  autocmd!
+  autocmd BufWritePost,BufReadPost * if &ft =~ 'javascript' | :Neomake | endif
+augroup END
 
-" Syntastic JavaScript (YCM only does completion for JS)
-let g:syntastic_javascript_checkers = ["eslint"]
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
+" ESLint
+function! ESLintFix()
+  execute "!" g:neomake_javascript_eslint_exe "--fix %"
+endfunction
+command! ESLintFix call ESLintFix()
 
 "=====[ Functions ]===========================================================
 
