@@ -337,8 +337,9 @@ let g:vim_json_syntax_conceal = 0
 
 " Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_jsx_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
 let g:neomake_javascript_eslint_exe = './node_modules/.bin/eslint'
+let g:neomake_jsx_eslint_exe = './node_modules/.bin/eslint'
 " let g:neomake_logfile = '/tmp/neomake.log'
 augroup Neomake
   autocmd!
