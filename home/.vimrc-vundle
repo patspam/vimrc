@@ -14,6 +14,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-startify'
 Plugin 'mileszs/ack.vim'
 Plugin 'milkypostman/vim-togglelist'
+Plugin 'miyakogi/conoline.vim'
 Plugin 'msanders/snipmate.vim'
 Plugin 'mxw/vim-jsx'  " JSX highlighting/indentation.
 Plugin 'nacitar/a.vim'
