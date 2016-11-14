@@ -339,6 +339,9 @@ let g:vim_json_syntax_conceal = 0
 " au Filetype javascript nnoremap <silent> <buffer> <leader>jd :FlowJumpToDef<CR>
 " au Filetype javascript nnoremap <silent> <buffer> <leader>jt :FlowType<CR>
 
+" CamelCaseMotion
+call camelcasemotion#CreateMotionMappings(',')
+
 " Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']

@@ -3,6 +3,7 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'b4winckler/vim-objc'
+Plugin 'bkad/CamelCaseMotion'
 Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'  " JSON highlight/indentation.
 Plugin 'gmarik/Vundle.vim'
