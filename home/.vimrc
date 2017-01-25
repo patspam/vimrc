@@ -211,6 +211,10 @@ nnoremap <silent> z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'l
 
 nnoremap <leader>v :vsplit<cr>
 
+" Scrollfix
+let g:scrollfix = -1  " Enable on demand via :FIX 60 (and diable via :FIXOFF)
+let g:scrollinfo = 0
+
 "=====[ Plugins ]=============================================================
 
 " NERDTree
@@ -334,6 +338,9 @@ let g:vim_json_syntax_conceal = 0
 
 " au Filetype javascript nnoremap <silent> <buffer> <leader>jd :FlowJumpToDef<CR>
 " au Filetype javascript nnoremap <silent> <buffer> <leader>jt :FlowType<CR>
+
+" CamelCaseMotion
+call camelcasemotion#CreateMotionMappings(',')
 
 " Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
