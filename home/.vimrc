@@ -177,7 +177,7 @@ nnoremap <silent> <leader>q :cw<CR>
 
 " Search/Replace
 nmap <leader>~ :%s/\<<C-r><C-w>\>/
-vmap ~ :s/
+" vmap ~ :s/
 
 " Sorting
 vmap gs :sort<CR>
