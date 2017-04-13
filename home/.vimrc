@@ -139,7 +139,7 @@ vmap <silent> u <ESC>ugv
 vmap <silent> <C-R> <ESC><C-R>gv
 
 " Line width
-au FileType javascript,java,c,cpp,objc,objcpp setlocal textwidth=100 colorcolumn=+1
+au FileType bzl,javascript,java,c,cpp,objc,objcpp setlocal textwidth=100 colorcolumn=+1
 au FileType vim setlocal textwidth=0
 au FileType markdown setlocal textwidth=80
 hi ColorColumn ctermbg=233
@@ -219,7 +219,8 @@ let g:scrollinfo = 0
 
 " NERDTree
 nnoremap <silent> <tab><tab> :NERDTreeToggle<CR>
-nnoremap <silent> <tab>f :NERDTreeFind<CR>
+" nnoremap <silent> <tab>f :NERDTreeFind<CR>
+nnoremap <silent> <tab>f :exe ':NERDTree ' . expand('%:p:h')<CR> :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=0
 let NERDTreeCaseSensitiveSort=1
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.git$', '\.gypd$'] " Toggle filtering via default f keybinding
