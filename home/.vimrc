@@ -139,7 +139,7 @@ vmap <silent> u <ESC>ugv
 vmap <silent> <C-R> <ESC><C-R>gv
 
 " Line width
-au FileType bzl,javascript,java,c,cpp,objc,objcpp setlocal textwidth=100 colorcolumn=+1
+au FileType bzl,javascript,java,c,cs,cpp,objc,objcpp setlocal textwidth=100 colorcolumn=+1
 au FileType vim setlocal textwidth=0
 au FileType markdown setlocal textwidth=80
 hi ColorColumn ctermbg=233
@@ -284,7 +284,7 @@ nnoremap <silent> <tab>b :ls<CR>
 
 " Commentary
 nmap <silent> <C-\> <Plug>CommentaryLine
-au Filetype c,cpp,objc,objcpp,html set commentstring=//%s
+au Filetype c,cs,cpp,objc,objcpp,html set commentstring=//%s
 au Filetype expect set commentstring=#\ %s
 
 " Matchit (bundled with vim)
