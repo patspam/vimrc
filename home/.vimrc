@@ -83,6 +83,7 @@ nnoremap <leader>h :vert help
 highlight CursorLine term=bold cterm=bold guibg=Grey40
 
 " SignColumn (gutter)
+set signcolumn=yes
 highlight SignColumn ctermbg=233
 au BufEnter * sign define dummy
 au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
@@ -93,7 +94,6 @@ highlight DiffChange ctermbg=233 ctermfg=3 guifg=#bbbb00
 highlight DiffDelete ctermbg=233 ctermfg=1 guifg=#ff2222
 
 " GitGutter
-let g:gitgutter_sign_column_always = 1
 let g:gitgutter_diff_args = ''
 let g:gitgutter_realtime = 0 " Only update on save
 nnoremap <tab>g :let g:gitgutter_diff_args = ''<left>
