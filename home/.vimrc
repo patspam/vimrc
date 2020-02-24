@@ -211,6 +211,11 @@ nnoremap <silent> z\| :execute "vertical resize " . (max(map(getline(1, '$'), 'l
 
 nnoremap <leader>v :vsplit<cr>
 
+" Italics
+set t_ZH=[3m
+set t_ZR=[23m
+highlight Comment cterm=italic
+
 " Scrollfix
 let g:scrollfix = -1  " Enable on demand via :FIX 60 (and diable via :FIXOFF)
 let g:scrollinfo = 0
