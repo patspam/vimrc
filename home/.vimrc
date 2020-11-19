@@ -34,7 +34,6 @@ set list " Special chars
 set matchtime=1 " Default 5 is too slow (in 10ms)
 set modeline
 set mouse=a " Enable mouse usage (all modes)
-set nocursorline " Causes a visible flicker, especially in visual mode
 set showcmd " Show (partial) command in status line
 set showmatch " Show matching brackets
 set smartcase " Do smart case matching
@@ -57,6 +56,11 @@ set undodir=~/.vim/undo
 set undolevels=5000
 set undofile
 
+" Color scheme
+" Set early so that rest of config can override as desired.
+" Use base16 to inherit from terminal theme.
+colorscheme base16-default-dark " https://github.com/chriskempson/base16-vim
+
 "=====[ Stuff ]===============================================================
 
 " .vimrc
@@ -69,8 +73,8 @@ nmap <silent> <leader>ev :next $MYVIMRC<CR>
 " Special Chars
 nmap <silent> <tab># :set list!<CR>
 set listchars=tab:▸\·,eol:¬,trail:\·,extends:»,precedes:«
-highlight NonText ctermfg=239 guifg=DarkGrey
-highlight SpecialKey ctermbg=0 ctermfg=DarkRed guibg=black guifg=DarkRed
+" highlight NonText ctermfg=239 guifg=DarkGrey
+" highlight SpecialKey ctermbg=0 ctermfg=DarkRed guibg=black guifg=DarkRed
 " Demo: tab & trailing spaces should be red	text     
 
 " Typos
@@ -80,18 +84,18 @@ command! -bang -nargs=? -complete=file E e<bang> <args>
 nnoremap <leader>h :vert help 
 
 " Visual mode highlight
-highlight CursorLine term=bold cterm=bold guibg=Grey40
+" highlight CursorLine term=bold cterm=bold guibg=Grey40
 
 " SignColumn (gutter)
 set signcolumn=yes
-highlight SignColumn ctermbg=233
+" highlight SignColumn ctermbg=233
 au BufEnter * sign define dummy
 au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 " Diff colours (also used by sign column plugins)
-highlight DiffAdd ctermbg=233 ctermfg=2 guifg=#009900
-highlight DiffChange ctermbg=233 ctermfg=3 guifg=#bbbb00
-highlight DiffDelete ctermbg=233 ctermfg=1 guifg=#ff2222
+" highlight DiffAdd ctermbg=233 ctermfg=2 guifg=#009900
+" highlight DiffChange ctermbg=233 ctermfg=3 guifg=#bbbb00
+" highlight DiffDelete ctermbg=233 ctermfg=1 guifg=#ff2222
 
 " GitGutter
 let g:gitgutter_diff_args = ''
@@ -106,11 +110,11 @@ nmap ]h <Plug>GitGutterNextHunk
 nmap <Leader>g :!git 
 
 " Colours
-hi VertSplit ctermfg=233 ctermbg=239 " NB. dotted grey line drawn in bg colour
+" hi VertSplit ctermfg=233 ctermbg=239 " NB. dotted grey line drawn in bg colour
 
 " CursorLine
 " nnoremap <Leader>c :set cursorline!<CR>
-hi CursorLine cterm=underline
+" hi CursorLine cterm=underline
 
 " Jump to most recent position in file
 au BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
@@ -142,7 +146,6 @@ vmap <silent> <C-R> <ESC><C-R>gv
 au FileType bzl,javascript,java,c,cs,cpp,objc,objcpp setlocal textwidth=100 colorcolumn=+1
 au FileType vim setlocal textwidth=0
 au FileType markdown setlocal textwidth=80
-hi ColorColumn ctermbg=233
 
 " Python
 au FileType python setlocal shiftwidth=2 softtabstop=2 tabstop=8 textwidth=80
@@ -349,21 +352,21 @@ let g:vim_json_syntax_conceal = 0
 call camelcasemotion#CreateMotionMappings(',')
 
 " Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_jsx_enabled_makers = ['eslint']
-let g:neomake_javascript_eslint_exe = './node_modules/.bin/eslint'
-let g:neomake_jsx_eslint_exe = './node_modules/.bin/eslint'
-" let g:neomake_logfile = '/tmp/neomake.log'
-augroup Neomake
-  autocmd!
-  autocmd BufWritePost,BufReadPost * if &ft =~ 'javascript' | :Neomake | endif
-augroup END
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_jsx_enabled_makers = ['eslint']
+" let g:neomake_javascript_eslint_exe = './node_modules/.bin/eslint'
+" let g:neomake_jsx_eslint_exe = './node_modules/.bin/eslint'
+" " let g:neomake_logfile = '/tmp/neomake.log'
+" augroup Neomake
+"   autocmd!
+"   autocmd BufWritePost,BufReadPost * if &ft =~ 'javascript' | :Neomake | endif
+" augroup END
 
-" ESLint
-function! ESLintFix()
-  execute "!" g:neomake_javascript_eslint_exe "--fix %"
-endfunction
-command! ESLintFix call ESLintFix()
+" " ESLint
+" function! ESLintFix()
+"   execute "!" g:neomake_javascript_eslint_exe "--fix %"
+" endfunction
+" command! ESLintFix call ESLintFix()
 
 "=====[ Functions ]===========================================================
 
