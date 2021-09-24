@@ -55,9 +55,8 @@ set undofile
 
 " Color scheme
 " Set early so that rest of config can override as desired.
-" Use base16 to inherit from terminal theme.
-set termguicolors " Added for Warp.
-colorscheme base16-default-dark " https://github.com/chriskempson/base16-vim
+" Use base16 to inherit from terminal theme
+" colorscheme base16-default-dark " https://github.com/chriskempson/base16-vim
 
 "=====[ Stuff ]===============================================================
 
@@ -86,7 +85,7 @@ nnoremap <leader>h :vert help
 
 " SignColumn (gutter)
 set signcolumn=yes
-" highlight SignColumn ctermbg=233
+highlight SignColumn ctermbg=Black
 au BufEnter * sign define dummy
 au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
@@ -98,6 +97,7 @@ au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 " GitGutter
 let g:gitgutter_diff_args = ''
 let g:gitgutter_realtime = 0 " Only update on save
+let g:gitgutter_set_sign_backgrounds = 1
 nnoremap <tab>g :let g:gitgutter_diff_args = ''<left>
 nmap [h <Plug>GitGutterPrevHunk
 nmap ]h <Plug>GitGutterNextHunk
@@ -417,6 +417,3 @@ endfunction
 command! -range=% Duplicates <line1>,<line2>call HighlightRepeats()
 
 silent! source ~/.vimrc-osx-post
-silent! source ~/.vimrc-g-shared-post
-silent! source ~/.vimrc-g-osx-post
-silent! source ~/.vimrc-g-goobuntu-post
