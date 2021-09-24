@@ -11,9 +11,6 @@ call vundle#begin()
 
 silent! source ~/.vimrc-vundle
 silent! source ~/.vimrc-osx-pre
-silent! source ~/.vimrc-g-shared-pre
-silent! source ~/.vimrc-g-osx-pre
-silent! source ~/.vimrc-g-goobuntu-pre
 
 " Vundle stanza (part 2)
 call vundle#end()
@@ -59,6 +56,7 @@ set undofile
 " Color scheme
 " Set early so that rest of config can override as desired.
 " Use base16 to inherit from terminal theme.
+set termguicolors " Added for Warp.
 colorscheme base16-default-dark " https://github.com/chriskempson/base16-vim
 
 "=====[ Stuff ]===============================================================
