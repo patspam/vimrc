@@ -23,7 +23,6 @@ Plugin 'neomake/neomake'
 Plugin 'niklasb/bufkill.vim'
 Plugin 'pangloss/vim-javascript'  " JS highlighting/indentation.
 Plugin 'qstrahl/vim-matchmaker'
-Plugin 'rizzatti/dash.vim'
 Plugin 'rking/ag.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdtree'
